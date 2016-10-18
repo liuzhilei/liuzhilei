@@ -9,6 +9,7 @@
             <list>
                 <!-- 这里支持多种寻址方式：classpath和file -->
                 <value>classpath:important.properties</value>
+                <value>classpath:log4j.properties</value>
             </list>
         </property>
     </bean>
