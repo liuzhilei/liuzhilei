@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="GameUser">
+    <resultMap id="BaseResultMap" type="GameUser">
+        <id column="id" property="id" jdbcType="BIGINT"></id>
+        <result column="user_pin" property="userPin" jdbcType="VARCHAR"></result>
+        <result column="mobile_phone" property="mobilePhone" jdbcType="VARCHAR"></result>
+        <result column="modified" property="modified" jdbcType="TIMESTAMP"/>
+        <result column="created" property="created" jdbcType="TIMESTAMP"/>
+        <result column="yn" property="yn" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_pin,mobile_phone,modified,created,yn
+    </sql>
+
+    <!-- 保存用户信息 -->
+    <insert id="insertUser" parameterType="GameUser">
+        INSERT INTO game_user (id,user_pin,mobile_phone,modified,created,yn)
+        VALUES ( #{id,jdbcType=BIGINT},
+                  #{userPin,jdbcType=VARCHAR},
+                  #{mobilePhone,jdbcType=VARCHAR},
+                  now(),now(),1)
+    </insert>
+
+    <select id="queryListUsers" parameterType="GameUser" resultMap="BaseResultMap">
+      SELECT
+        <include refid="Base_Column_List"/>
+      FROM
+        game_user
+      WHERE
+        yn = 1
+    </select>
+
+</mapper>

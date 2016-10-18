@@ -1,0 +1,52 @@
+package com.liu.controller;
+
+import com.liu.common.GameUser;
+import com.liu.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Created by liuzhilei on 2016/10/17.
+ */
+@Controller
+@RequestMapping(value = "/user")
+public class UserController {
+
+    @Autowired
+    @Qualifier("userService")
+    private UserService userService;
+    @Autowired
+    private RequestMappingHandlerMapping requestMappingHandlerMapping;
+
+    @RequestMapping("/getUsers.do")
+    /*@ResponseBody*/
+    public ModelAndView getUsers(GameUser gameUser,HttpServletRequest request) {
+        ModelAndView result = new ModelAndView();
+        List<GameUser> list = userService.queryListUsers(gameUser);
+        result.addObject("list",list);
+        result.setViewName("user");
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("URL").append("--").append("Class").append("--").append("Function").append('\n');
+        Map<RequestMappingInfo, HandlerMethod> map = requestMappingHandlerMapping.getHandlerMethods();
+        for (Map.Entry<RequestMappingInfo, HandlerMethod> m : map.entrySet()) {
+            RequestMappingInfo info = m.getKey();
+            HandlerMethod method = m.getValue();
+            sb.append(info.getPatternsCondition()).append("--");
+            sb.append(method.getMethod().getDeclaringClass()).append("--");
+            sb.append(method.getMethod().getName()).append('\n');
+        }
+        System.out.println(sb.toString());
+        return result;
+    }
+}
