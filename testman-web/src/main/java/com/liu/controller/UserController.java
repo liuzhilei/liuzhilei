@@ -30,11 +30,13 @@ public class UserController {
 
     @RequestMapping("/getUsers.do")
     /*@ResponseBody*/
-    public ModelAndView getUsers(GameUser gameUser,HttpServletRequest request) {
-        ModelAndView result = new ModelAndView();
+    public String getUsers(GameUser gameUser,Map<String,Object> result) {
+        /*ModelAndView result = new ModelAndView();
         List<GameUser> list = userService.queryListUsers(gameUser);
         result.addObject("list",list);
-        result.setViewName("user");
+        result.setViewName("user");*/
+        List<GameUser> list = userService.queryListUsers(gameUser);
+        result.put("list",list);
 
         StringBuilder sb = new StringBuilder();
         sb.append("URL").append("--").append("Class").append("--").append("Function").append('\n');
@@ -47,6 +49,6 @@ public class UserController {
             sb.append(method.getMethod().getName()).append('\n');
         }
         System.out.println(sb.toString());
-        return result;
+        return "user";
     }
 }
