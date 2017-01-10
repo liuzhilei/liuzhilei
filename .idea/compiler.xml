@@ -23,6 +23,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="aoptest" />
+        <module name="spring-aop-test" />
+        <module name="springaoptest" />
         <module name="test-api" />
         <module name="test-common" />
         <module name="test-dao" />

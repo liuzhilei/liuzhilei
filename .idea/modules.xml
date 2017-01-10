@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/j2setest/j2setest.iml" filepath="$PROJECT_DIR$/j2setest/j2setest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-aop-test/spring-aop-test.iml" filepath="$PROJECT_DIR$/spring-aop-test/spring-aop-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/test.iml" filepath="$PROJECT_DIR$/test.iml" />
       <module fileurl="file://$PROJECT_DIR$/test-api/test-api.iml" filepath="$PROJECT_DIR$/test-api/test-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/test-common/test-common.iml" filepath="$PROJECT_DIR$/test-common/test-common.iml" />
