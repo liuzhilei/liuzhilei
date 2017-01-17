@@ -7,7 +7,7 @@ import java.lang.reflect.Proxy;
  * 动态代理特性：
  * 1.继承了proxy类，因为java是单继承，所以动态代理支持接口
  * 2.提供了一个InvocationHandler作为参数的构造方法
- * 3.
+ * 3.jdk动态代理的类是必须“实现接口的类”，因为产生的proxy代理类也是实现了这个接口，如果目标类自己新建了方法，proxy类是不能代理这个方法的
  */
 public class ProxyMain {
     public static void main(String[] args) {
