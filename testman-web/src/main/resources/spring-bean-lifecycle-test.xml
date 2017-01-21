@@ -6,8 +6,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-    <import resource="spring-config-mybatis.xml"/>
-    <import resource="spring-config-common.xml"/>
-
-
+    <!--<bean id="initSequenceBean" class="com.liu.springtest.InitSequenceBean" init-method="initMethod"/>-->
+    <context:component-scan base-package="com.liu.springtest.springbeanlifecycle"/>
+    <bean class="com.liu.springtest.springbeanlifecycle.DemoBean"  init-method="initMethod"/>
 </beans>
