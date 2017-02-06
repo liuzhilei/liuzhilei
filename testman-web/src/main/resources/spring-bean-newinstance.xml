@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <!--1.构造器实例化-->
+    <bean id="beanInstance1" class="com.liu.springtest.newinstancebean.BeanInstance1"/>
+
+    <!--2.使用静态工厂实例化-->
+    <bean id="beanInstance2" class="com.liu.springtest.newinstancebean.BeanInstance2" factory-method="createInstance" lazy-init="true">
+        <property name="msg" value="刘志磊"/>
+    </bean>
+
+    <!--3.使用实例工厂方法实例化-->
+    <bean id="beanInstance3Factory" class="com.liu.springtest.newinstancebean.BeanInstance3Factory" />
+    <bean id="beanInstance3" factory-bean="beanInstance3Factory" factory-method="createInstance"/>
+
+</beans>
