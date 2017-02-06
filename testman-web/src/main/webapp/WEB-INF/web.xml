@@ -14,7 +14,11 @@
     </context-param>
 
     <listener>
+        <!--监听servletContext的初始化-->
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.liu.controller.TestListener</listener-class>
     </listener>
 
     <filter>
