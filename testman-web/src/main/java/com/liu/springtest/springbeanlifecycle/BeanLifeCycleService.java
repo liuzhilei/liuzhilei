@@ -19,6 +19,9 @@ import java.util.Arrays;
 public class BeanLifeCycleService implements InitializingBean, DisposableBean, ApplicationContextAware,
         ApplicationEventPublisherAware, BeanClassLoaderAware, BeanFactoryAware,
         BeanNameAware, EnvironmentAware, ImportAware, ResourceLoaderAware {
+    /*
+    .*Aware接口可以让bean获取spring框架本身的对象
+    * */
 
     private String name;
 
