@@ -13,8 +13,11 @@ import javax.annotation.PostConstruct;
  * 2.通过<bean>元素的init-method、destroy-method属性决定初始化之后，销毁之前的操作
  * 3.在指定方法上定义@PostConstruct和@PreDestroy决定初始化之后，销毁之前的操作
  *
- *
- *
+ * 执行顺序：
+ * construct
+   postConstruct
+   afterPropertiesSet
+   init-method
  *
  * 验证上面三个的区别
  */
