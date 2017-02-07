@@ -6,7 +6,17 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-   <context:component-scan base-package="com.liu.springtest.lifecycletest"/>
+    <!-- 使用Resource, PostConstruct,PreDestroy等注解-->
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+    <!--使用Autowired注解-->
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    <!--使用require注解-->
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+    <!-- 使用下面的标签，上面的注解都包括
+    <context:annotation-config/>-->
+    <!--使用下面的标签，包含了自动注入上述processor的功能，所以上面的注解都可以不用
+    <context:component-scan base-package="com.liu.springtest.lifecycletest"/>-->
+
     
     <bean id="initSequenceBean" class="com.liu.springtest.lifecycletest.InitSequenceBean" init-method="initMethod"/>
 

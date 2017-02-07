@@ -3,6 +3,7 @@ package com.liu.springtest.lifecycletest;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.config.AbstractFactoryBean;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 
@@ -21,6 +22,7 @@ import javax.annotation.PostConstruct;
  *
  * 验证上面三个的区别
  */
+@Service
 public class InitSequenceBean extends AbstractFactoryBean {
 
     public InitSequenceBean() {

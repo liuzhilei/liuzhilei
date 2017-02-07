@@ -11,4 +11,10 @@ public class Test {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-test.xml");
         applicationContext.getBean("initSequenceBean");
     }
+
+    @org.junit.Test
+    public void test(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-test.xml");
+    }
+
 }
