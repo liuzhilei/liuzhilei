@@ -15,13 +15,13 @@ public class NeiClass {
                 return 0;
             }
         });
-        final String name = "123";
+        /*final String name = "123";
         class My{
             public void tt(){
                 User u = new User();
                 u.setUserName(name);
             }
-        }
+        }*/
 
     }
 }
