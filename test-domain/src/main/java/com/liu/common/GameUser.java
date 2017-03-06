@@ -1,5 +1,6 @@
 package com.liu.common;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,9 @@ import java.util.Date;
  * Table: game_user
  @mbggenerated do_not_delete_during_merge 2016-10-17 16:35:16
  */
-public class GameUser {
+public class GameUser implements Serializable{
+
+    //private static final Serializable SERIALIZABLE =
     /**
      *   id  游戏用户id
      * Column: game_user.id
