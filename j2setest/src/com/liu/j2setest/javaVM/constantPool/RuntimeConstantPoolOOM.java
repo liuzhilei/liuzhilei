@@ -1,4 +1,4 @@
-package com.liu.j2setest.javaVM;
+package com.liu.j2setest.javaVM.constantPool;
 
 /**
  * Created by liuzhilei on 2017/2/21.

@@ -11,6 +11,8 @@ import java.lang.reflect.Proxy;
  */
 public class ProxyMain {
     public static void main(String[] args) {
+        //生成$Proxy0的class文件
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
 
         MyInvocationHandler handler = new MyInvocationHandler(new HelloWorldImpl1());
         /**
