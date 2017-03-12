@@ -1,19 +1,18 @@
-package com.liu.j2setest.thread;
+package com.liu.j2setest.thread.volatileTest;
 
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by liuzhilei on 2016/12/29.
+ * 使用volatile，说明该变量不会在各个线程栈中缓存，所有线程共享该变量，并不能保证同步
  */
 public class VolatileTest {
 
-    private static int count = 0;
+    private static volatile int count = 0;
 
     public static void incr() {
 
-        Set set = new HashSet();
-        set.iterator();
         try {
             Thread.sleep(1);
         } catch (InterruptedException e) {
