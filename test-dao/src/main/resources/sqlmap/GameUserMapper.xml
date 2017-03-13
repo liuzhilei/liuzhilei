@@ -32,4 +32,12 @@
         yn = 1
     </select>
 
+    <update id="updateUser" parameterType="GameUser">
+        UPDATE
+          game_user
+        SET
+          user_pin = #{userPin}
+        where id = #{id}
+    </update>
+
 </mapper>

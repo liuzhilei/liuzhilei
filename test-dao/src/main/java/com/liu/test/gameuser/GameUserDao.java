@@ -10,4 +10,9 @@ import java.util.List;
  */
 public interface GameUserDao {
     List<GameUser> queryListUsers(GameUser gameUser);
+
+    int addUsers(GameUser gameUser);
+
+    int update(GameUser gameUser);
+
 }

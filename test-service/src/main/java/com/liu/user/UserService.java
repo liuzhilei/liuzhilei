@@ -11,4 +11,6 @@ import java.util.List;
 public interface UserService {
 
     List<GameUser> queryListUsers(GameUser gameUser);
+
+    int addUser(GameUser gameUser);
 }

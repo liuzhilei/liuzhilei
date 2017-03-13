@@ -11,10 +11,20 @@ import java.util.List;
  * Created by liuzhilei on 2016/10/17.
  */
 @Repository("gameUserDao")
-public class GameUserDaoImpl extends GenericBaseDaoImpl implements GameUserDao{
+public class GameUserDaoImpl extends GenericBaseDaoImpl implements GameUserDao {
 
     @Override
     public List<GameUser> queryListUsers(GameUser gameUser) {
-        return this.executeForObjectList("GameUser.queryListUsers",gameUser);
+        return this.executeForObjectList("GameUser.queryListUsers", gameUser);
+    }
+
+    @Override
+    public int addUsers(GameUser gameUser) {
+        return this.execute("GameUser.insertUser", gameUser);
+    }
+
+    @Override
+    public int update(GameUser gameUser) {
+        return this.execute("GameUser.updateUser", gameUser);
     }
 }

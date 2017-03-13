@@ -12,10 +12,12 @@
 
     <typeAliases>
         <typeAlias alias="GameUser" type="com.liu.common.GameUser"/>
+        <typeAlias alias="GameSwitch" type="com.liu.common.GameSwitch"/>
     </typeAliases>
 
     <mappers>
         <mapper resource="sqlmap/GameUserMapper.xml" />
+        <mapper resource="sqlmap/GameSwitchMapper.xml"/>
     </mappers>
 
 
