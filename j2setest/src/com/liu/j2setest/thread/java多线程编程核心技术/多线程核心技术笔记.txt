@@ -3,5 +3,13 @@
 第二章：对象及变量的并发访问
 1.当一个线程执行的代码出现异常，它所持有的锁会自动释放。
 
+第三章：线程间通信
+1.在wait等待阶段，执行interrupt会抛出异常
+2.join是线程排队运行，内部实现的是wait；synchronized使用的是“对象监视器”原理作为同步
+3.join与interrupt彼此遇到，会抛出异常
+4.threadLocal不是为了解决多线程间共享变量，而是为每个线程创建一个单独的副本
+5.threadLocal会导致内存泄漏问题，因为threadLocal会为不同线程创建不同的ThreadLocalMap，这个Map的key是弱引用，但是key确实我们自己
+    放入的强引用，会导致key被gc，但是value不能回收，导致内存泄漏
+
 
 

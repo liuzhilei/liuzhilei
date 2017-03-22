@@ -5,6 +5,8 @@ import java.util.concurrent.*;
 /**
  * Created by liuzhilei on 2017/3/21.
  * 多线程捕获异常
+ * 方法1：新建一个类实现Thread.UncaughtExceptionHandler，运行线程池之前指定异常捕获类就可以
+ * 方法2，运行executorService.submit(),返回future，调用future.get，然后进行捕获
  */
 public class ThreadPool implements Callable<Integer> {
     @Override
@@ -19,6 +21,7 @@ class ThreadPoolMain {
         ExecutorService executorService = Executors.newCachedThreadPool();
 
         //1.executorService.execute(new Runnable())不会有返回结果，拿不到线程池的异常)
+        Thread.setDefaultUncaughtExceptionHandler(new MyThreadException());
         executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -26,6 +29,8 @@ class ThreadPoolMain {
                 i = i / 0;
             }
         });
+
+
 
         //2.executorService.submit(new Callable())可以拿到结果，然后可以捕获异常
         /*Future<Integer> future = executorService.submit(new Callable<Integer>() {
@@ -48,3 +53,12 @@ class ThreadPoolMain {
 
     }
 }
+
+class MyThreadException implements Thread.UncaughtExceptionHandler {
+    @Override
+    public void uncaughtException(Thread t, Throwable e) {
+        System.out.println("异常捕获到了");
+        e.printStackTrace();
+    }
+}
+

@@ -97,6 +97,7 @@ class Test3Main {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         Thread thread3 = new Test3NotifyThread(o);
         thread3.start();
 

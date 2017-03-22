@@ -7,6 +7,8 @@ import java.util.List;
 
 /**
  * Created by liuzhilei on 2016/12/9.
+ *
+ * shuffle，对list进行重新排序
  */
 public class ShuffleTest {
     public static void main(String[] args) {
