@@ -1,4 +1,4 @@
-package com.liu.j2setest.thread.第三章对象的共享.不变性;
+package com.liu.j2setest.thread.java并发编程实战.第三章对象的共享.不变性;
 
 import java.util.HashSet;
 import java.util.Set;

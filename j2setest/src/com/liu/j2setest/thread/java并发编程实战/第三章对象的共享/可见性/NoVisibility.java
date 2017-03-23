@@ -1,4 +1,4 @@
-package com.liu.j2setest.thread.第三章对象的共享.可见性;
+package com.liu.j2setest.thread.java并发编程实战.第三章对象的共享.可见性;
 
 /**
  * Created by liuzhilei on 2017/3/13.

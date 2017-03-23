@@ -1,8 +1,4 @@
-package com.liu.j2setest.thread.第二章线程安全.加锁机制.重入;
-
-import com.sun.org.apache.xpath.internal.SourceTree;
-
-import java.util.Collections;
+package com.liu.j2setest.thread.java并发编程实战.第二章线程安全.加锁机制.重入;
 
 /**
  * Created by liuzhilei on 2017/3/13.

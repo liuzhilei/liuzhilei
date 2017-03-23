@@ -1,6 +1,4 @@
-package com.liu.j2setest.thread.第二章线程安全.原子性;
-
-import java.util.concurrent.atomic.AtomicInteger;
+package com.liu.j2setest.thread.java并发编程实战.第二章线程安全.原子性;
 
 /**
  * Created by liuzhilei on 2017/3/12.

@@ -1,4 +1,4 @@
-package com.liu.j2setest.thread.第三章对象的共享.线程封闭;
+package com.liu.j2setest.thread.java并发编程实战.第三章对象的共享.线程封闭;
 
 /**
  * Created by liuzhilei on 2017/3/14.
