@@ -10,6 +10,9 @@
 4.threadLocal不是为了解决多线程间共享变量，而是为每个线程创建一个单独的副本
 5.threadLocal会导致内存泄漏问题，因为threadLocal会为不同线程创建不同的ThreadLocalMap，这个Map的key是弱引用，但是key确实我们自己
     放入的强引用，会导致key被gc，但是value不能回收，导致内存泄漏
+6.lock/unlock实现的功能和synchronized功能一样，但是lock功能更加灵活。
+7.使用lock的condition可以实现等待/通知模式
+
 
 
 
