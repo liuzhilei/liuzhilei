@@ -55,5 +55,6 @@
     <orderEntry type="library" name="Maven: tomcat:servlet:4.0.6" level="project" />
     <orderEntry type="library" name="Maven: cglib:cglib:3.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm:5.0.3" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
   </component>
 </module>

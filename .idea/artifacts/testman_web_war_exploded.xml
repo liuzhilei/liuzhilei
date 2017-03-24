@@ -41,6 +41,7 @@
           <element id="library" level="project" name="Maven: tomcat:servlet:4.0.6" />
           <element id="library" level="project" name="Maven: cglib:cglib:3.2.0" />
           <element id="library" level="project" name="Maven: org.ow2.asm:asm:5.0.3" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
         </element>
       </element>
       <element id="directory" name="META-INF">
