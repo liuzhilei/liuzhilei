@@ -15,6 +15,14 @@ import java.util.concurrent.CountDownLatch;
  * 闭锁和栅栏区别：
  * 闭锁用于所有线程等待一个外部事件的发生；
  * 栅栏用于所有线程相互等待，直到所有线程到达某一个公共点以后，打开栅栏，通过栅栏执行
+ * <p/>
+ * 闭锁与join区别
+ * join是等待之前的线程全部完成，然后进行下面的操作。
+ * countDownLatch闭锁里面有一个计数器，可以在线程中对程序进行控制：
+ * 假设一个场景:对于一个线程中，有两个步骤，需要第一个步骤全部完成以后再进行第二
+ * 步，现在就可以利用countDown在第一步完成后进行计数，当完成以后，就可以进行第二
+ * 步，这种情况join是无法完成的。
+ * http://blog.csdn.net/zhutulang/article/details/48504487
  */
 public class CountDownLatchTest {
 

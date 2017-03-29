@@ -11,34 +11,9 @@ import java.util.concurrent.Executors;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(1111111);
-
-        List<Integer> list = new ArrayList<Integer>();
-        for (int i = 1; i <= 100; i++) {
-            list.add(i);
-        }
-
-        ExecutorService executorService = Executors.newFixedThreadPool(5);
-        //executorService.execute();
-
+        System.out.println(Runtime.getRuntime().availableProcessors());
     }
 
 }
 
-class MainThread implements Runnable {
-    private List list;
-    private int per;
 
-    public MainThread(List list, int per) {
-        this.list = list;
-        this.per = per;
-    }
-
-    @Override
-    public void run() {
-        for (int i = 0; i < per; i++) {
-
-        }
-        System.out.println("ThreadName = " + Thread.currentThread().getName() + " i = " );
-    }
-}

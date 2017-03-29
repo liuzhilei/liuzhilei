@@ -17,6 +17,7 @@ public class ShuffleTest {
             list.add(i);
         }
         System.out.println("before:  " + list.get(0));
+        //实现重新排序
         Collections.shuffle(list);
         System.out.println("after:   " + list.get(0));
 
