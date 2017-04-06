@@ -39,7 +39,7 @@ public class CompletionServiceDemo {
                 //take等待下一个结果并且返回future对象
                 //poll不等待，有结果就返回future对象，没有就返回null
                 //completionService.poll();
-                System.out.println(completionService.take().get() + " i = " + i);//从blockQueen队列中利用take取出结果,b
+                System.out.println(completionService.take().get() + " i = " + i);//从blockQueen队列中利用take取出结果
             }
             System.out.println("CompletionService 执行完了............");
         } catch (InterruptedException e) {
