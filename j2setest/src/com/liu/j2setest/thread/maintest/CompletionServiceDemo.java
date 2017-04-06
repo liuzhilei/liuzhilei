@@ -47,6 +47,9 @@ public class CompletionServiceDemo {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
+        }finally {
+            //newFixedThreadPool不会自动退出，在需要关闭的情况下，需要手动关闭;newCachedThreadPool空闲等待60秒
+            executorService.shutdown();
         }
 
     }
