@@ -7,6 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Created by liuzhilei on 2017/3/23.
  * <p/>
+ * 使用lock的condition实现等待/通知
  * 注意调用await的时候，要持有lock的锁(同步监视器)
  */
 public class MyService {

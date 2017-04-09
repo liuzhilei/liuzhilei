@@ -63,7 +63,7 @@ public class SemaphoreTest {
         Thread t3 = new myThread();
 
         t1.start();
-        //t2.start();
-        //t3.start();
+        t2.start();
+        t3.start();
     }
 }
