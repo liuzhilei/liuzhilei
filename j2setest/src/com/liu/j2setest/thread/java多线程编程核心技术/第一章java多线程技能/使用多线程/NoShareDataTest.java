@@ -2,6 +2,7 @@ package com.liu.j2setest.thread.java多线程编程核心技术.第一章java多
 
 /**
  * Created by liuzhilei on 2017/3/15.
+ * 线程间共享数据的情况
  */
 public class NoShareDataTest extends Thread {
     private int count = 5;

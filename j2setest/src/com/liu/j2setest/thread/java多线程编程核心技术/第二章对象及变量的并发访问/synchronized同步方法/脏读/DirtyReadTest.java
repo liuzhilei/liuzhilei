@@ -18,12 +18,12 @@ public class DirtyReadTest {
             e.printStackTrace();
         }
         this.sex = sex;
-        System.out.println("setValue 方法，当前线程：" + Thread.currentThread().getName() + ", userName=" + userName + ", sex=" + sex);
+        System.out.println("setValue 方法，当前线程：" + Thread.currentThread().getName() + ", userName=" + this.userName + ", sex=" + this.sex);
     }
 
     public void getValue() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
