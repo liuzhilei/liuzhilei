@@ -27,7 +27,7 @@ class SleepingMain {
         Thread thread = new SleepingInterrupt();
         thread.start();
         try {
-            thread.sleep(1000);
+            thread.sleep(10000);
         } catch (InterruptedException e) {
             System.out.println("main exception");
             e.printStackTrace();

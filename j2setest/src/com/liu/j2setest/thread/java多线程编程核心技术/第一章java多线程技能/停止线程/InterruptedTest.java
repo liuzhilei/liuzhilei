@@ -6,7 +6,7 @@ package com.liu.j2setest.thread.java多线程编程核心技术.第一章java多
  * <p/>
  * 有两种方法：
  * 1.public static boolean interrupted()
- * 判断<b>当前线程</b>是否是中断状态，如果是，就会把状态标识设置为false
+ * 判断<b>当前线程</b>是否是中断状态，如果是，就会清除当前的中断状态，把状态标识设置为false
  * 2.public boolean isInterrupted()
  * 判断<b>线程</b>是否是中断状态，但不清除终端标识
  */
