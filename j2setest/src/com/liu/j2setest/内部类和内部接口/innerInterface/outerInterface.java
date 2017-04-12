@@ -2,7 +2,7 @@ package com.liu.j2setest.内部类和内部接口.innerInterface;
 
 /**
  * Created by liuzhilei on 2017/4/12.
- * 内部接口,可以用于回调
+ * 内部接口，可以增强代码的易读性和可维护性
  */
 public class outerInterface {
 
