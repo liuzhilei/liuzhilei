@@ -10,6 +10,8 @@ import java.net.SocketException;
  * UDP 无连接，不可靠，无序，速度快
  * <p/>
  * 服务端，实现基于udp的用户登录
+ * <p/>
+ * 对于同一个socket，如果关闭了输出流，则与该输出流关联的socket也会被关闭，所以一般不用关闭流，直接关闭socket即可
  */
 public class UDPServerSocket {
     public static void main(String[] args) {
