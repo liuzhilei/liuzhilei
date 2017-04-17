@@ -1,5 +1,7 @@
 package com.liu.j2setest;
 
+import java.io.IOException;
+import java.nio.channels.ServerSocketChannel;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -19,7 +21,16 @@ import java.util.concurrent.locks.ReentrantLock;
         String string = "";
         System.out.println(Runtime.getRuntime().availableProcessors());
 
+    }
 
+    public void test(){
+        try {
+            //打开一个socketChannel链接
+            ServerSocketChannel socketChannel = ServerSocketChannel.open();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
