@@ -35,6 +35,7 @@ public class ChannelAndBufferDemo {
                 read = channel.read(buffer);
 
             }
+            channel.close();
             file.close();
 
         } catch (FileNotFoundException e) {
