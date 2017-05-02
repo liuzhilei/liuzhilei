@@ -71,7 +71,7 @@ public class Demo {
         }
     }
 
-    public void test() {
+    public void serverSocketChannel() {
         try {
             //1.打开一个socketChannel链接
             ServerSocketChannel socketChannel = ServerSocketChannel.open();
@@ -110,6 +110,17 @@ public class Demo {
             Selector selector1 = selectionKey.selector();
 
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void socketChannel() {
+        try {
+            SocketChannel channel = SocketChannel.open();
+            channel.connect(new InetSocketAddress(InetAddress.getByName("localhost"), 10086));
+
+            channel.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
