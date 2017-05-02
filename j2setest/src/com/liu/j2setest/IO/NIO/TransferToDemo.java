@@ -18,7 +18,7 @@ public class TransferToDemo {
             RandomAccessFile toFile = new RandomAccessFile("D://tofile.txt", "rw");
             FileChannel toChannel = toFile.getChannel();
 
-            toChannel.transferTo(0, fromChannel.size(), fromChannel);
+            fromChannel.transferTo(0, fromChannel.size(), toChannel);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

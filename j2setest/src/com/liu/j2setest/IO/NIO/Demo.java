@@ -3,6 +3,7 @@ package com.liu.j2setest.IO.NIO;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.net.ServerSocket;
 import java.nio.channels.*;
 import java.util.Iterator;
 import java.util.Set;
@@ -11,6 +12,63 @@ import java.util.Set;
  * Created by liuzhilei on 2017/4/17.
  */
 public class Demo {
+
+    /**
+     * demo示例主要看这个
+     */
+    public void mainDemo() {
+        try {
+            //打开一个socketChannel
+            ServerSocketChannel channel = ServerSocketChannel.open();
+            //创建一个selector
+            Selector selector = Selector.open();
+            //设置为非阻塞模式，selector和channel配合使用，channel必须设置为非阻塞模式
+            channel.configureBlocking(false);
+            /**
+             * 将channel注册到selector上，interest事件为接收就绪和读就绪
+             *
+             * interest事件分类：
+             * SelectionKey.OP_CONNECT  连接就绪
+             * SelectionKey.OP_ACCEPT   接收就绪
+             * SelectionKey.OP_READ     读就绪
+             * SelectionKey.OP_WRITE    写就绪
+             */
+            SelectionKey selectionKey = channel.register(selector, SelectionKey.OP_ACCEPT | SelectionKey.OP_READ);
+
+            //从selectionKey访问Channel和Selector
+            Channel channel1 = selectionKey.channel();
+            Selector selector1 = selectionKey.selector();
+            while (true) {
+                //返回的值表示有多少通道已经就绪
+                int select = selector.select();
+                if (select == 0) {
+                    continue;
+                }
+                //返回已选择的键集合
+                Set<SelectionKey> selectionKeys = selector.selectedKeys();
+                //遍历已选择的键集合来访问就绪的通道，并检测各个键所对应通道的就绪时间
+                Iterator<SelectionKey> iterator = selectionKeys.iterator();
+                while (iterator.hasNext()) {
+                    SelectionKey key = iterator.next();
+                    if (key.isConnectable()) {
+                        System.out.println("连接就绪");
+                    } else if (key.isAcceptable()) {
+                        System.out.println("接收就绪");
+                    } else if (key.isReadable()) {
+                        System.out.println("读就绪");
+                    } else if (key.isWritable()) {
+                        System.out.println("写就绪");
+                    }
+                    //注意，selector不会从已经选择的键集合中移除SelectionKey实例，需要自己手动移除
+                    iterator.remove();
+                }
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void test() {
         try {
@@ -50,12 +108,13 @@ public class Demo {
             SelectableChannel channel = selectionKey.channel();
             Selector selector1 = selectionKey.selector();
 
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-}
 
+}
 
 class ReactorTask extends Thread {
 
