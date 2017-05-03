@@ -11,6 +11,9 @@ import java.nio.channels.FileChannel;
  * 普通IO读取文件
  * 普通NIO读取文件
  * 利用NIO的mappedByteBuffer读取文件 三者的性能比较
+ *
+ * 参考网址
+ * http://blog.csdn.net/gzu_imis/article/details/21109753
  */
 public class NIORead {
     //99M 大小
