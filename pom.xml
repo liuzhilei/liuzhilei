@@ -17,6 +17,7 @@
         <module>test-service</module>
         <module>testman-web</module>
         <module>spring-aop-test</module>
+        <module>nettystudy</module>
     </modules>
 
     <properties>

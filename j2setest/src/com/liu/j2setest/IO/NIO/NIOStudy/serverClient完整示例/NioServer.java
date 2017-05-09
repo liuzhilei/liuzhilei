@@ -69,6 +69,7 @@ public class NioServer {
                             protocol.handleWrite(key);
                         }
                     } catch (IOException e) {
+                        e.printStackTrace();
                         iterator.remove();
                         continue;
                     }

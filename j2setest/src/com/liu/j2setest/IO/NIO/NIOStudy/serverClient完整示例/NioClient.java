@@ -65,10 +65,12 @@ public class NioClient {
 
     public static void main(String[] args) throws IOException {
         NioClient client = new NioClient(InetAddress.getByName("localhost").getHostAddress(), 10086);
-        for (int i = 0; i < 10; i++) {
-            client.sendMsg("Nio" + i);
+        //for (int i = 0; i < 10; i++)
+        int i = 0;
+        while (true) {
+            client.sendMsg("Nio" + (i++));
             try {
-                Thread.sleep(20);
+                Thread.sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
