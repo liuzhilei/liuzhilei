@@ -66,6 +66,9 @@ public class TimeServer {
              * </span>
              */
             ch.pipeline().addLast(new LineBasedFrameDecoder(1024));
+            /**
+             * StringDecoder: 将接收到的对象转换成字符串
+             */
             ch.pipeline().addLast(new StringDecoder());
             ch.pipeline().addLast(new TimeServerHandler());
         }
