@@ -1,13 +1,21 @@
-package 第三章.Netty时间服务器.服务端;
+package 第四章粘包拆包.粘包拆包现象.服务端;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.*;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
  * Created by liuzhilei on 2017/5/9.
+ * 服务端粘包拆包测试
+ *
+ * 执行结果表明只接收到两条消息，第一条包含57条"QUERY TIME ORDER"指令，第二条
+ * 包含43条"QUERY TIME ORDER"指令，正好100条。但是我们期待的是收到100条消息，所以
+ * 发生了tcp粘包
  */
 public class TimeServer {
     public void bind(int port) throws Exception {

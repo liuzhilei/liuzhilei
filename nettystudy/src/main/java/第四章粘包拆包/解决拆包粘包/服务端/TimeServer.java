@@ -1,13 +1,19 @@
-package 第三章.Netty时间服务器.服务端;
+package 第四章粘包拆包.解决拆包粘包.服务端;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.*;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.string.StringDecoder;
 
 /**
  * Created by liuzhilei on 2017/5/9.
+ * 服务端粘包拆包测试
  */
 public class TimeServer {
     public void bind(int port) throws Exception {
@@ -51,6 +57,16 @@ public class TimeServer {
     private class ChildChannelHandler extends ChannelInitializer<SocketChannel> {
         @Override
         protected void initChannel(SocketChannel ch) throws Exception {
+            /**
+             * <span>
+             * LineBasedFrameDecoder工作原理：
+             *     是以换行符为结束标志的解码器。
+             *     依次遍历ByteBuf中的可读字节，判断是否有"\n"或者"\r\n"，如果有，就结束，组成一行
+             * 是以换行符为结束标志的解码器
+             * </span>
+             */
+            ch.pipeline().addLast(new LineBasedFrameDecoder(1024));
+            ch.pipeline().addLast(new StringDecoder());
             ch.pipeline().addLast(new TimeServerHandler());
         }
     }

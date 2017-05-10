@@ -1,4 +1,4 @@
-package 第三章.Netty时间服务器.服务端;
+package 第四章粘包拆包.粘包拆包现象.服务端;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -8,10 +8,15 @@ import io.netty.channel.ChannelHandlerContext;
 /**
  * Created by liuzhilei on 2017/5/9.
  * 用于对网络事件进行读写操作
+ * 模拟拆包粘包现象
  */
 public class TimeServerHandler extends ChannelHandlerAdapter {
+
+    private int counter;
+
     /**
      * 服务端接收到客户端的消息时，会执行该方法
+     *
      * @param ctx
      * @param msg
      * @throws Exception
@@ -24,25 +29,22 @@ public class TimeServerHandler extends ChannelHandlerAdapter {
         byte[] req = new byte[buf.readableBytes()];
         //将buf中的字节数组复制到新的byte数组中
         buf.readBytes(req);
-        //获取请求的信息
-        String body = new String(req, "utf-8");
-        System.out.println("the time server receive order : " + body);
+        /**
+         * 获取请求的信息
+         * 每读到一次消息，计数器就+1
+         * 服务器接收到的消息总数应该跟客户端发送的消息总数相同
+         */
+        String body = new String(req, "utf-8").substring(0, req.length
+                //System.getProperty("line.separator") 是换行符的意思，屏蔽了windows和linux的区别
+                - System.getProperty("line.separator").length());
+        System.out.println("the time server receive order : " + body
+                + " ; the counter is : " + (++counter));
         String currentTime = "QUERY TIME ORDER".equalsIgnoreCase(body) ?
                 new java.util.Date(System.currentTimeMillis()).toString() : "BAD ORDER";
+        currentTime = currentTime + System.getProperty("line.separator");
         ByteBuf resp = Unpooled.copiedBuffer(currentTime.getBytes());
         //异步发送应答消息给客户端
-        ctx.write(resp);
-    }
-
-    @Override
-    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-        /**
-         * 将消息发送队列中的消息写入到socketChannel中发送给对方。
-         * 从性能角度考虑，为了防止频繁的唤醒selector进行消息发送，netty的write方法并不直接将消息
-         * 写入socketChannel中，调用write方法只是把待发送的消息放到发送缓冲数组中，再通过调用flush
-         * 方法，将发送缓冲区中的消息全部写到SocketChannel中
-         */
-        ctx.flush();
+        ctx.writeAndFlush(resp);
     }
 
     @Override

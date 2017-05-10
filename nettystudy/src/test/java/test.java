@@ -7,5 +7,7 @@ public class test {
 
     public static void main(String[] args) {
         //EventLoopGroup
+        String str = "123";
+        str.intern();
     }
 }

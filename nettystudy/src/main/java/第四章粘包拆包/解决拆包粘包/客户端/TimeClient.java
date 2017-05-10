@@ -1,4 +1,4 @@
-package 第三章.Netty时间服务器.客户端;
+package 第四章粘包拆包.解决拆包粘包.客户端;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -8,11 +8,14 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.string.StringDecoder;
 
 import java.net.InetAddress;
 
 /**
  * Created by liuzhilei on 2017/5/9.
+ * 客户端粘包拆包测试
  */
 public class TimeClient {
     public void connect(int port, String host) throws Exception {
@@ -27,6 +30,8 @@ public class TimeClient {
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
+                            ch.pipeline().addLast(new LineBasedFrameDecoder(1024));
+                            ch.pipeline().addLast(new StringDecoder());
                             ch.pipeline().addLast(new TimeClientHandler());
                         }
                     });

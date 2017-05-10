@@ -1,4 +1,4 @@
-package 第三章.Netty时间服务器.客户端;
+package 第四章粘包拆包.粘包拆包现象.客户端;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -13,6 +13,15 @@ import java.net.InetAddress;
 
 /**
  * Created by liuzhilei on 2017/5/9.
+ * 客户端粘包拆包测试
+ *
+ * 客户端输出结果：
+ * now is :BAD ORDER
+ * BAD ORDER ; the counter is :1
+ *
+ * 按照设计客户端应该收到100条当前系统时间的消息，但实际上只收到一条，原因是
+ * 服务端只收到两条请求消息，所以实际服务端也只是发送两条应答，因为不满足查询
+ * 条件，所以返回2条"BAD ORDER"应答消息，说明服务端返回的应答消息也发生了粘包
  */
 public class TimeClient {
     public void connect(int port, String host) throws Exception {
