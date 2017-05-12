@@ -14,6 +14,12 @@ public class EchoClientHandler extends ChannelHandlerAdapter {
         this.sendNumber = sendNumber;
     }
 
+    /**
+     * 客户端与服务端tcp链接成功以后，会触发此方法
+     *
+     * @param ctx
+     * @throws Exception
+     */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         UserInfo[] infos = UserInfo();
@@ -33,5 +39,23 @@ public class EchoClientHandler extends ChannelHandlerAdapter {
             userInfos[i] = userInfo;
         }
         return userInfos;
+    }
+
+    /**
+     * 服务端返回应答消息，会调用此方法
+     *
+     * @param ctx
+     * @param msg
+     * @throws Exception
+     */
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        System.out.println("客户端接收到msgpack的消息：" + msg);
+        ctx.write(msg);
+    }
+
+    @Override
+    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+        ctx.flush();
     }
 }
