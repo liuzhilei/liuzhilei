@@ -192,9 +192,9 @@ public class HttpFileServerHandler extends
                 continue;
             }
             String name = f.getName();
-            if (!ALLOWED_FILE_NAME.matcher(name).matches()) {
+            /*if (!ALLOWED_FILE_NAME.matcher(name).matches()) {
                 continue;
-            }
+            }*/
             buf.append("<li>链接：<a href=\"");
             buf.append(name);
             buf.append("\">");

@@ -12,8 +12,6 @@ import io.netty.handler.codec.http.HttpRequestDecoder;
 import io.netty.handler.codec.http.HttpResponseEncoder;
 import io.netty.handler.stream.ChunkedWriteHandler;
 
-import java.net.InetAddress;
-
 /**
  * Created by liuzhilei on 2017/5/12.
  * http文件服务器 启动类

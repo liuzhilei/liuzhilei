@@ -11,7 +11,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  */
 public class TimeServer {
     public void bind(int port) throws Exception {
-        //配置服务端的NIO线程组，NioEventLoopGroup是一个线程组，包含了一组nio线程，专门用于网络事件的处理
+        //配置服务端的NIO线程组，NioEventLoopGroup是一个线程组，包含了一组nio线程，专门用于网络事件的处理;
+        //NioEventLoopGroup实际是EventLoop数组，它不仅是处理网络IO时间，而且用户自定义的task和定时任务task也统一由EventLoop负责处理
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
@@ -24,7 +25,10 @@ public class TimeServer {
              * workerGroup就是从reactor，用于处理IO操作请求
              */
             bootstrap.group(bossGroup, workerGroup)
-                    //设置创建的Channel为NioServerSocketChannel，功能对应于jdk nio中的ServerSocketChannel
+                    /**
+                     * 设置创建的Channel为NioServerSocketChannel，功能对应于jdk nio中的ServerSocketChannel.
+                     * 这是利用反射创建的NioServerSocketChannel对象
+                     */
                     .channel(NioServerSocketChannel.class)
                             //配置NioServerSocketChannel的TCP参数
                     .option(ChannelOption.SO_BACKLOG, 1024)
