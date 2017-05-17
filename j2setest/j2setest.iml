@@ -18,5 +18,6 @@
         <jarDirectory url="file://$MODULE_DIR$/src/resources" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" exported="" name="Maven: org.apache.zookeeper:zookeeper:3.4.8" level="project" />
   </component>
 </module>
