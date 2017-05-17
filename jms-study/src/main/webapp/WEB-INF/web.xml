@@ -9,7 +9,7 @@
 
     <servlet>
         <servlet-name>jms-study-send</servlet-name>
-        <servlet-class>com.jms.study.Send</servlet-class>
+        <servlet-class>com.jms.study.点对点.Send</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>jms-study-send</servlet-name>
@@ -18,7 +18,7 @@
 
     <servlet>
         <servlet-name>jms-study-receive</servlet-name>
-        <servlet-class>com.jms.study.Receive</servlet-class>
+        <servlet-class>com.jms.study.点对点.Receive</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>jms-study-receive</servlet-name>

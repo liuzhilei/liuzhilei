@@ -1,4 +1,4 @@
-package com.jms.study;
+package com.jms.study.点对点;
 
 import org.springframework.stereotype.Service;
 
