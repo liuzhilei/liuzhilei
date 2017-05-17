@@ -32,6 +32,7 @@
     <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/jms-study" />
     <file type="web" url="file://$PROJECT_DIR$/testman-web" />
   </component>
   <component name="IdProvider" IDEtalkID="FFD271F22ADC39AC8041E1878EAA1F9A" />

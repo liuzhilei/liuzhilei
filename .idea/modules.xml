@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/j2setest/j2setest.iml" filepath="$PROJECT_DIR$/j2setest/j2setest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jms-study/jms-study.iml" filepath="$PROJECT_DIR$/jms-study/jms-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/nettystudy/nettystudy.iml" filepath="$PROJECT_DIR$/nettystudy/nettystudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-aop-test/spring-aop-test.iml" filepath="$PROJECT_DIR$/spring-aop-test/spring-aop-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/test.iml" filepath="$PROJECT_DIR$/test.iml" />

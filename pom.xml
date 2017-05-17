@@ -18,6 +18,7 @@
         <module>testman-web</module>
         <module>spring-aop-test</module>
         <module>nettystudy</module>
+        <module>jms-study</module>
     </modules>
 
     <properties>
