@@ -25,5 +25,23 @@
         <url-pattern>/receive</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>jms-study-publish</servlet-name>
+        <servlet-class>com.jms.study.发布订阅.Publisher</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jms-study-publish</servlet-name>
+        <url-pattern>/publish</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>jms-study-subscribe</servlet-name>
+        <servlet-class>com.jms.study.发布订阅.Subscribe</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jms-study-subscribe</servlet-name>
+        <url-pattern>/subscribe</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

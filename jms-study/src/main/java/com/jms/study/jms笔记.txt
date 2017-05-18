@@ -1,0 +1,36 @@
+找到activemq安装目录，cmd运行activemq start 启动服务
+访问http://localhost:8161/ 进入mq管理页面，用户名密码默认都是admin
+
+这两个例子中，都是tomcat+JNDI+activeMq来实现的
+
+需要在tomcat的context.xml文件中添加：
+
+点对点模式：
+	<Resource name="queue/connectionFactory"
+                auth="Container"
+                type="org.apache.activemq.ActiveMQConnectionFactory"
+                description="JMS Connection Factory"
+                factory="org.apache.activemq.jndi.JNDIReferenceFactory"
+                brokerURL="tcp://localhost:61616"
+                brokerName="LocalActiveMQBroker" />
+
+	<Resource name="queue/queue0"
+                auth="Container"
+                type="org.apache.activemq.command.ActiveMQQueue"
+                description="My Queue"
+                factory="org.apache.activemq.jndi.JNDIReferenceFactory"
+                physicalName="TomcatQueue" />
+
+
+发布订阅模式：
+    <Resource name="topic/connectionFactory" auth="Container"
+            type="org.apache.activemq.ActiveMQConnectionFactory" description="JMS Connection Factory"
+            factory="org.apache.activemq.jndi.JNDIReferenceFactory"
+            brokerURL="failover:(tcp://localhost:61616)?initialReconnectDelay=100&amp;maxReconnectAttempts=5"
+            brokerName="LocalActiveMQBroker" useEmbeddedBroker="false" />
+
+        <Resource name="topic/topic0"
+            auth="Container"
+            type="org.apache.activemq.command.ActiveMQTopic" description="My Topic" factory="org.apache.activemq.jndi.JNDIReferenceFactory"
+            physicalName="TestTopic" />
+
