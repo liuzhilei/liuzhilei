@@ -24,6 +24,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="aoptest" />
+        <module name="dubbo-study" />
         <module name="jms-study" />
         <module name="nettystudy" />
         <module name="spring-aop-test" />

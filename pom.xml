@@ -19,6 +19,7 @@
         <module>spring-aop-test</module>
         <module>nettystudy</module>
         <module>jms-study</module>
+        <module>dubbo-study</module>
     </modules>
 
     <properties>
