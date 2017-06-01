@@ -1,53 +1,51 @@
 package com.liu.j2setest.java数据结构和算法.简单排序.插入排序;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 /**
  * Created by liuzhilei on 2017/3/14.
  * 插入排序，性能最好
+ * 时间复杂度：O(N^2)
+ *
  */
 public class Charu {
 
-    private static int jiaohuanCount = 0;
-    private static Integer[] arr;
-
     public static void main(String[] args) {
 
-        int bijiaoCount = 0;
-        List<Integer> list = new ArrayList<Integer>(10000);
-        for (int i = 0; i < 10000; i++) {
-            list.add(new Random().nextInt(10000));
-        }
-        arr = (Integer[]) list.toArray(new Integer[10000]);
-        int out, in;
-        long startTime = System.currentTimeMillis();
-        for (out = 1; out < arr.length; out++) {
-            int temp = arr[out];
-            in = out;
-            while (in > 0 && arr[in - 1] > temp) {
-                arr[in] = arr[in - 1];
-                --in;
+        int[] theArray = new int[10];
+        theArray[0] = 23;
+        theArray[1] = 12;
+        theArray[2] = 15;
+        theArray[3] = 53;
+        theArray[4] = 27;
+        theArray[5] = 36;
+        theArray[6] = 1;
+        theArray[7] = 43;
+        theArray[8] = 45;
+        theArray[9] = 38;
+
+        sort(theArray);
+
+        System.out.println(Arrays.toString(theArray));
+    }
+
+    public static void sort(int[] num) {
+        for (int i = 0; i < num.length - 1; i++) {
+            int j = i + 1;
+            int temp = num[j];
+
+            //待插入数temp 与 排序部分的的最大值即num[i]进行比较
+            while (i >= 0 && num[i] > temp) {
+                num[j] = num[i];
+                i--;
+                j--;
             }
-            arr[in] = temp;
+            num[j] = temp;
+
         }
-        long endTime = System.currentTimeMillis();
-
-        for (int i : arr) {
-            System.out.println(i);
-        }
-
-        System.out.println(endTime - startTime);
-        System.out.println("比较次数：" + bijiaoCount);
-        System.out.println("交换次数：" + jiaohuanCount);
-
     }
 
-    private static void swap(int a, int b) {
-        int temp = arr[a];
-        arr[a] = arr[b];
-        arr[b] = temp;
-        jiaohuanCount++;
-    }
 }
