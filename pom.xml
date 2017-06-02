@@ -101,7 +101,7 @@
             </exclusions>
         </dependency>
         <!--Apache log4j redirect to slf4j -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>log4j-over-slf4j</artifactId>
             <version>${slf4j.version}</version>
@@ -111,7 +111,7 @@
                     <groupId>org.slf4j</groupId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency>-->
         <!--Java Util Logging redirect to slf4j -->
         <dependency>
             <groupId>org.slf4j</groupId>

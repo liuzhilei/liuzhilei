@@ -49,7 +49,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
     <orderEntry type="module" module-name="test-service" />
     <orderEntry type="module" module-name="test-manager" />
     <orderEntry type="module" module-name="test-dao" />
@@ -63,12 +62,12 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:3.2.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:3.2.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:3.2.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: junit:junit:4.9" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:1.2.1" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.18" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.13" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.6.1" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:log4j-over-slf4j:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:jul-to-slf4j:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:druid:1.0.9" level="project" />
     <orderEntry type="module-library">
