@@ -17,18 +17,7 @@ public class Charu {
 
     public static void main(String[] args) {
 
-        int[] theArray = new int[10];
-        theArray[0] = 23;
-        theArray[1] = 12;
-        theArray[2] = 15;
-        theArray[3] = 53;
-        theArray[4] = 27;
-        theArray[5] = 36;
-        theArray[6] = 1;
-        theArray[7] = 43;
-        theArray[8] = 45;
-        theArray[9] = 38;
-
+        int[] theArray = {23, 12};
         sort(theArray);
 
         System.out.println(Arrays.toString(theArray));
