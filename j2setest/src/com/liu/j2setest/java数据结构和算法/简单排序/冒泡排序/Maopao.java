@@ -2,6 +2,7 @@ package com.liu.j2setest.java数据结构和算法.简单排序.冒泡排序;
 
 import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -13,42 +14,27 @@ import java.util.Random;
  */
 public class Maopao {
 
-    private static int jiaohuanCount = 0;
-    private static Integer[] arr;
-
-    public static void main(String[] args) {
-        int bijiaoCount = 0;
-        List<Integer> list = new ArrayList<Integer>(10000);
-        for (int i = 0; i < 10000; i++) {
-            list.add(new Random().nextInt(10000));
-        }
-        arr = (Integer[]) list.toArray(new Integer[10000]);
-        long startTime = System.currentTimeMillis();
-        for (int i = 0; i < arr.length; i++) {
+    public static void maoPao(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
             for (int j = 0; j < i; j++) {
-                if (arr[i] < arr[j]) {
-                    swap(i, j);
-
+                if (nums[j] > nums[i]) {
+                    swap(nums, j, i);
                 }
-                bijiaoCount++;
             }
         }
-        long endTime = System.currentTimeMillis();
-
-        for (int i : arr) {
-            System.out.println(i);
-        }
-        System.out.println(endTime - startTime);
-        System.out.println("比较次数：" + bijiaoCount);
-        System.out.println("交换次数：" + jiaohuanCount);
-
     }
 
-    private static void swap(int a, int b) {
-        int temp = arr[a];
-        arr[a] = arr[b];
-        arr[b] = temp;
-        jiaohuanCount++;
+    private static void swap(int[] nums, int a, int b) {
+        int temp = nums[a];
+        nums[a] = nums[b];
+        nums[b] = temp;
     }
+
+    public static void main(String[] args) {
+        int[] nums = {5, 3, 1, 6, 8, 2, 9};
+        maoPao(nums);
+        System.out.println(Arrays.toString(nums));
+    }
+
 
 }
