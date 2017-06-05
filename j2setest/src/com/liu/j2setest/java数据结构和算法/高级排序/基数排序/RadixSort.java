@@ -13,7 +13,7 @@ public class RadixSort {
 
     /**
      * @param nums 待排序数组
-     * @param d    基数
+     * @param d    基数，和数组中最大的的位数相同
      */
     public static void radix(int nums[], int d) {
         int k = 0;
@@ -49,8 +49,8 @@ public class RadixSort {
     }
 
     public static void main(String[] args) {
-        int[] nums = {221, 125, 323, 9, 1, 4, 8, 7, 6, 0, 15, 34, 32};
-        radix(nums, 100);
+        int[] nums = {2221, 125, 323, 9, 1, 4, 8, 7, 6, 0, 15, 34, 32};
+        radix(nums, 1000);
 
         System.out.println(Arrays.toString(nums));
     }
