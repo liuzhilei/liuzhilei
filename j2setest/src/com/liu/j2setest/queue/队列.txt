@@ -1,0 +1,2 @@
+队列：
+    java提供的线程安全的Queue分为阻塞队列和非阻塞队列，阻塞队列典型的是BlockingQueue，非阻塞队列的典型是ConcurrentLinkedQueue。
