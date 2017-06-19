@@ -2,6 +2,16 @@
     以arraylist为例，在多线程并发情况下，一个线程正在对arrayList进行插入或者删除，另一个线程如果利用迭代器对其进行遍历，
 会立即抛出java.util.ConcurrentModificationException异常，而不是等到遍历结束后再检查有没有问题
 
+    原因：
+    final void checkForComodification() {
+        if (modCount != expectedModCount)
+            throw new ConcurrentModificationException();
+    }
+
+    上面是抛异常的原因，集合的每次修改都会使modCount+1，迭代之前，期望的修改次数expectedModCount和实际修改次数modCount是
+相同的，如果迭代时，modCount发生了变化，导致两个值不相等，就会抛出这个异常。
+
+
 解决办法：
     用CopyOnWriteArrayList替换ArrayList即可，因为CopyOnWriteArrayList是写时复制，读取集合和对集合进行增删不是指向的同一
 个，所以不会报快速失败，不过数据不是实时的
