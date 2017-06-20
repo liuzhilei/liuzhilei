@@ -3,7 +3,7 @@ package com.liu.j2setest.thread.java多线程编程核心技术.第三章线程�
 /**
  * Created by liuzhilei on 2017/3/22.
  */
-public class Test {
+public class ThreadLocalTest {
     public static void main(String[] args) {
         Thread thread = new ThreadTest1Thread1();
         thread.start();
