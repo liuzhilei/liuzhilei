@@ -5,7 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by liuzhilei on 2017/4/5.
- * 信号量测试
+ * 信号量测试 信号量是一种共享锁
  * <p/>
  * 信号量相当于一个计数器，如果线程想要访问某个资源，先从信号量中通过acquire拿到许可，同时信号量的计数器减1
  * 如果此时信号量的内部大于0，就证明有可用资源，就可以执行，当访问完这一资源以后，必须释放这个信号量release。
