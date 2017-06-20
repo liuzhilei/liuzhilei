@@ -1,0 +1,13 @@
+
+    spring容器的事务机制实质是对传统jdbc的封装，为了实现事务管理，必须在一个事务的任何地方获取的connection都是同一个。通
+过spring的aop动态代理，使得spring能够按照传统的jdbc方式进行事务处理。spring利用的是threadlocal存储Map对象，map的key是
+datasource生成的key，value是connection封装的connectionHolder，线程第一次访问的时候，会封装这个map放入threadLocal，以后直
+接取这个就可以。
+
+platformTransactionManager --> dataSourceTransactionManager
+
+执行类是jdbcTemplate，方法是execute()，在这里面获取Connection：
+    DataSourceUtils.getConnection(getDataSource()); --> doGetConnection(dataSource); -->
+    先调用ConnectionHolder conHolder = (ConnectionHolder) TransactionSynchronizationManager.getResource(dataSource);获取链接，
+    如果获取不到，调用TransactionSynchronizationManager.bindResource(dataSource, holderToUse);取得第一次的链接，就是通过threadlocal
+    来存放数据，map的key是datasource生成的key，value是connection封装的connectionHolder
