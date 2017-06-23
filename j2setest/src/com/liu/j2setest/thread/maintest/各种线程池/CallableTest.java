@@ -19,10 +19,14 @@ public class CallableTest {
         thread.start();
 
         try {
+            /**
+             * futureTask.get()可以捕获到Callable任务抛出的异常ExecutionException
+             */
             System.out.println(futureTask.get());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
+            System.out.println("捕获异常");
             e.printStackTrace();
         }
     }
@@ -30,13 +34,15 @@ public class CallableTest {
 
 
 /**
- * Callable 具有返回值，所以
+ * Callable 具有返回值，出现异常，会将异常封装到ExecutionException中返回
  */
 class NewCachedThreadPoolTestCallable implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         Thread.sleep(100);
         int i = 1;
+        //故意抛出异常
+        i = i / 0;
         return i;
     }
 }
