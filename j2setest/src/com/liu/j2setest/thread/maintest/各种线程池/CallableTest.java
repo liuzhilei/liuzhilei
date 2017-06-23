@@ -8,7 +8,8 @@ import java.util.concurrent.FutureTask;
  * Created by liuzhilei on 2017/3/23.
  * <p/>
  * Callable的用法
- * 利用futureTask，放入线程；取得返回值
+ * 利用FutureTask，放入线程；取得返回值
+ * FutureTask在Executor框架中表示异步任务
  */
 public class CallableTest {
     public static void main(String[] args) {
