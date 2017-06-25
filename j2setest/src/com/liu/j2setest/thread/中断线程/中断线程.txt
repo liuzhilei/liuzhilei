@@ -1,0 +1,14 @@
+中断线程
+    thread.interrupt()方法是中断线程，将会设置该线程的中断状态位，即设置为true，线程中断的结果可以
+视情况而定。线程会不时的监测这个中断标识位，以判断线程是否应该被中断，它并不像stop方法那样会中断一
+个正在运行的线程。
+
+    1.被中断的线程不一定要终止。中断一个线程只是为了引起该线程的注意，至于后续操作我们可以决定。
+    2.处于sleep，join，wait等操作的线程，如果被调用interrupt()后，会抛出InterruptedException，然后线程
+的中断标志位会由true重置为false，因为线程为了处理异常已经重新处于就绪状态。
+    3.进入synchronized段，以及Lock.lock()，inputStream.read()等，调用interrupt()无效，因为他们都不会抛
+出中断异常。如果拿不到资源，他们会无限期的阻塞下去
+    对于lock.lock()，可以改用lock.lockInterruptibly(),可被中断的加锁操作，他会抛出InterruptedException
+异常,相当于等待时间无限期长的lock.tryLock(long time,TimeUnit unit)
+    lock.tryLock(long time,TimeUnit unit)定义：如果锁在给定等待时间内没有被另一个线程保持，且当前线程未被中断，则获取该锁。
+    对于inputStream等资源，有些可以通过close()方法将资源关闭，对应的阻塞也会被放开。
