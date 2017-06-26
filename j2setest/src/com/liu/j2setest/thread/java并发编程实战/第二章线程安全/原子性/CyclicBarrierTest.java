@@ -1,5 +1,6 @@
 package com.liu.j2setest.thread.java并发编程实战.第二章线程安全.原子性;
 
+import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 /**
@@ -15,6 +16,9 @@ import java.util.concurrent.CyclicBarrier;
  * 闭锁和栅栏区别：
  * 闭锁用于所有线程等待一个外部事件的发生；
  * 栅栏用于所有线程相互等待，直到所有线程到达某一个公共点以后，打开栅栏，通过栅栏执行
+ * <p/>
+ * 线程到达栅栏位置时，调用await方法，这个方法会阻塞直到所有线程都到达栅栏位置，然后
+ * 栅栏打开，所有线程会释放，而栅栏会被重置以便下次使用。
  */
 public class CyclicBarrierTest {
 
@@ -22,6 +26,12 @@ public class CyclicBarrierTest {
         CyclicBarrier cyclicBarrier = new CyclicBarrier(5, new Runnable() {
             @Override
             public void run() {
+                System.out.println("此时所有线程到达栅栏位置，执行栅栏操作，await方法必须在栅栏操作执行结束后才会释放阻塞");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("五个人都到达了终点，可以庆祝了!!!");
             }
         });
@@ -50,8 +60,17 @@ class Running implements Runnable {
             System.out.println("第" + id + "开始跑步了...");
             Thread.sleep(500);
             System.out.println("第" + id + "个人到达终点了");
-            cyclicBarrier.await();
-        } catch (Exception e) {
+            /**
+             * await方法会阻塞，直到所有线程都到达栅栏位置，打开栅栏，释放所有线程，此时栅栏也会
+             * 被重置用于下次使用
+             * 如果成功通过栅栏以后，会为每个线程返回一个唯一的到达索引号
+             */
+            int await = cyclicBarrier.await();
+            System.out.println("await方法释放阻塞后的操作" + id + "，成功通过栅栏，返回唯一到达索引号：" + await);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (BrokenBarrierException e) {
+            System.out.println("如果await方法调用超时，或者await阻塞时被中断，所有阻塞的await调用都将被终止并抛出BrokenBarrierException异常");
             e.printStackTrace();
         }
     }
