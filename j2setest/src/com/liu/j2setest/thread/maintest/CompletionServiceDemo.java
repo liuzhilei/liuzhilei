@@ -8,7 +8,7 @@ import java.util.concurrent.*;
  * <p/>
  * CompletionService将Executor和BlockingQueue的功能融合到了一起
  * 将Callable任务提交给CompletionService执行，它将线程池中所有线程的执行结果future放入BlockingQueue队列，take或者poll可以取出结果
- * 应用：对于多重验证，如果互相之间没有关联，可以应用CompletionService，利用线程池，提高性能,更快的处理返回结果
+ * 应用：适用于一组计算任务。例如对于多重验证，如果互相之间没有关联，可以应用CompletionService，利用线程池，提高性能,更快的处理返回结果
  */
 public class CompletionServiceDemo {
 
