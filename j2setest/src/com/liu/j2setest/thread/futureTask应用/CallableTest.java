@@ -1,4 +1,4 @@
-package com.liu.j2setest.thread.maintest.各种线程池;
+package com.liu.j2setest.thread.futureTask应用;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
