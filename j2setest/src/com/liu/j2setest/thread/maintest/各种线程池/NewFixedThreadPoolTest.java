@@ -16,24 +16,26 @@ public class NewFixedThreadPoolTest {
         ExecutorService executorService = Executors.newFixedThreadPool(5);
         executorService.execute(new FixedThreadPoolThread());
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1);
             //主动关闭
             /**
              * 关闭了submit通道，不再接受新的任务，线程池中已有的任务执行
              * 结束以后，线程池关闭
+             * 该方法不会阻塞，不会等待提交的任务执行完毕
              */
             executorService.shutdown();
             /**
              * 立即关闭正在执行的任务，不再接受新任务，返回线程池中等待
              * 执行的任务列表
              */
-            executorService.shutdownNow();
+            //executorService.shutdownNow();
             /**
              * 当前线程会阻塞，直到线程池中所有任务执行完成，或者到达
              * 超时时间，或者线程被中断
              * 调用该方法后，线程池还会接受新的任务
              */
-            executorService.awaitTermination(60, TimeUnit.MINUTES);
+            //executorService.awaitTermination(1, TimeUnit.SECONDS);
+            System.out.println("调用关闭后的操作");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -45,7 +47,7 @@ class FixedThreadPoolThread implements Runnable {
     @Override
     public void run() {
         try {
-            Thread.sleep(100);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
