@@ -47,7 +47,7 @@ public class WaitNotifyDemo {
                         Thread.sleep(1000);
                         System.out.println("线程B准备执行notify方法");
                         lock.notify();
-                        System.out.println("执行notify方法结束");
+                        System.out.println("执行notify方法结束，此时不会立即释放锁，需要执行完synchronized代码块");
                         Thread.sleep(5000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
