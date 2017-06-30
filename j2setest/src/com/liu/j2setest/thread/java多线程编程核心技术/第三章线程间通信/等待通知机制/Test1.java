@@ -18,7 +18,7 @@ public class Test1 {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
-        try {
+        /*try {
             String str = "";
             System.out.println("同步代码块之前...");
             synchronized (str) {
@@ -29,6 +29,55 @@ public class Test1 {
             System.out.println("退出同步代码块...");
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }*/
+        String string = "";
+        Thread ttt1 = new TTT1(string);
+        ttt1.start();
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Thread ttt2 = new TTT2(string);
+        ttt2.start();
+    }
+
+    static class TTT1 extends Thread {
+        private String string;
+
+        public TTT1(String string) {
+            this.string = string;
+        }
+
+        @Override
+        public void run() {
+            synchronized (string) {
+                System.out.println("before wait ");
+                try {
+                    string.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("after wait");
+            }
         }
     }
+
+    static class TTT2 extends Thread {
+        private String string;
+
+        public TTT2(String string) {
+            this.string = string;
+        }
+
+        @Override
+        public void run() {
+            synchronized (string) {
+                System.out.println("before notify");
+                string.notify();
+                System.out.println("after notify");
+            }
+        }
+    }
+
 }
