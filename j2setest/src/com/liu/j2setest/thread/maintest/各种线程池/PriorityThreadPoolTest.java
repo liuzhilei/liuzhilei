@@ -39,7 +39,10 @@ public class PriorityThreadPoolTest {
         @Override
         public int compareTo(PriorityThread priorityThread) {
             int i = this.priority - priorityThread.getPriority();
-            //System.out.println(i);
+            /**
+             * i<0 当前对象排在前面
+             * 1>0 当前对象排在后面
+             */
             return i;
         }
 
