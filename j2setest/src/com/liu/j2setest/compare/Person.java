@@ -47,6 +47,7 @@ public class Person implements Comparable<Person> {
      * 当前对象 - 比较对象
      * 返回-1 当前对象排在前面
      * 返回1，当前对象排在后面
+     * 也就是正序排列
      * @param o
      * @return
      */
