@@ -9,6 +9,12 @@ import java.util.concurrent.locks.ReentrantLock;
  * <p/>
  * 使用lock的condition实现等待/通知
  * 注意调用await的时候，要持有lock的锁(同步监视器)
+ * <p/>
+ * 一个lock对象有无数个Condition对象
+ * condition对object进行了扩展，所以condition也有wait和notify，要注意正
+ * 确的方法：await() signal() signalAll()
+ * <p/>
+ * lock是一种广义的内置锁，那么condition就是一种广义的内置条件队列
  */
 public class MyService {
     private Lock lock = new ReentrantLock();
@@ -34,7 +40,7 @@ public class MyService {
             lock.lock();
             System.out.println("signal的时间为：" + System.currentTimeMillis());
             condition.signal();
-        }finally {
+        } finally {
             lock.unlock();
         }
     }
