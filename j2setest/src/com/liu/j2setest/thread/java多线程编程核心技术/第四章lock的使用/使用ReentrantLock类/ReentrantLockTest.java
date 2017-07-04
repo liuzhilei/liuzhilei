@@ -18,6 +18,7 @@ public class ReentrantLockTest {
     Lock lock = new ReentrantLock();
 
     public void test() {
+        lock.tryLock();
         lock.lock();
         for (int i = 0; i < 5; i++) {
             System.out.println("ThreadName = " + Thread.currentThread().getName() + " i = " + (i + 1));
