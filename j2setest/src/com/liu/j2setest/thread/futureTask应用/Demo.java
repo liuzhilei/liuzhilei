@@ -24,9 +24,20 @@ public class Demo {
         /**
          * 第一种方式：Future+ExecutorService
          */
-        /*Future<Integer> future = executorService.submit(task);
-        System.out.println(future.get());
-        executorService.shutdown();*/
+        Future<Integer> future = executorService.submit(task);
+        try {
+            Thread.sleep(500);
+            if (!future.isDone()) {
+                System.out.println("任务还没有完成");
+            }
+            System.out.println(future.get());
+            executorService.shutdown();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
 
         /**
          * 第二种方式：FutureTask+ExecutorService
@@ -38,7 +49,7 @@ public class Demo {
         /**
          * 第三种方式：FutureTask+Thread
          */
-        FutureTask<Integer> futureTask = new FutureTask<Integer>(task);
+        /*FutureTask<Integer> futureTask = new FutureTask<Integer>(task);
         Thread thread = new Thread(futureTask);
         thread.setName("自定义线程名称");
         thread.start();
@@ -61,14 +72,14 @@ public class Demo {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        System.out.println("线程执行结果是：" + result);
+        System.out.println("线程执行结果是：" + result);*/
 
         /*--------------------------------------------------------------------------------------------------------------------------*/
 
         /**
-         * 对于实现runnable接口的线程，可以通过FutureTask指定返回值的构造方法得到返回值，或者捕获异常
+         * 对于实现runnable接口的线程，可以通过FutureTask指定返回值的构造方法得到返回值，或者捕获异常，类似于Callable
          */
-        Task1 task1 = new Task1();
+        /*Task1 task1 = new Task1();
         FutureTask<Integer> task2 = new FutureTask<Integer>(task1, 1);
         Thread thread1 = new Thread(task2);
         thread1.start();
@@ -80,7 +91,7 @@ public class Demo {
         } catch (ExecutionException e) {
             System.out.println("error2");
             e.printStackTrace();
-        }
+        }*/
     }
 
     static class Task implements Callable<Integer> {
