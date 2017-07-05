@@ -15,7 +15,7 @@ import java.util.List;
  * -Xmn200M     新生代可用内存
  * -XX:+UseConcMarkSweepGC      使用cms进行gc
  * -XX:+UseCMSInitiatingOccupancyOnly   一般测试用，JVM不基于运行时收集的数据来启动CMS垃圾收集周期
- * -XX:CMSInitiatingOccupancyFraction=90    表示第一次进行CMS垃圾回收在老年代空间占用90%时触发
+ * -XX:CMSInitiatingOccupancyFraction=90    表示老年代空间占用90%时会触发CMS进行垃圾回收
  * -XX:+CMSScavengeBeforeRemark     执行CMS remark之前进行一次youngGC，这样能有效降低remark的时间
  *
  * 这段代码导致执行垃圾回收不能正常回收空间 ，详见word文档
