@@ -14,7 +14,7 @@ import java.util.List;
  * -Xms500M     堆内存最小可用内存，一般和最大内存设置一样
  * -Xmn200M     新生代可用内存
  * -XX:+UseConcMarkSweepGC      使用cms进行gc
- * -XX:+UseCMSInitiatingOccupancyOnly   一般测试用
+ * -XX:+UseCMSInitiatingOccupancyOnly   一般测试用，JVM不基于运行时收集的数据来启动CMS垃圾收集周期
  * -XX:CMSInitiatingOccupancyFraction=90    表示第一次进行CMS垃圾回收在老年代空间占用90%时触发
  * -XX:+CMSScavengeBeforeRemark     执行CMS remark之前进行一次youngGC，这样能有效降低remark的时间
  *
