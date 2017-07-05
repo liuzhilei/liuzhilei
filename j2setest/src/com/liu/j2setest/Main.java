@@ -37,6 +37,9 @@ public class Main {
         allocateElements(10);
 
         System.out.println(5 & 3);
+        
+
+
 
         System.out.println("基本类型数组："+new int[2] instanceof Object);
 
