@@ -33,6 +33,12 @@ public class CyclicBarrierTest {
                     e.printStackTrace();
                 }
                 System.out.println("五个人都到达了终点，可以庆祝了!!!");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("栅栏线程执行完毕，await开始结束阻塞，开始执行....................................");
             }
         });
 
@@ -64,6 +70,7 @@ class Running implements Runnable {
              * await方法会阻塞，直到所有线程都到达栅栏位置，打开栅栏，释放所有线程，此时栅栏也会
              * 被重置用于下次使用
              * 如果成功通过栅栏以后，会为每个线程返回一个唯一的到达索引号
+             * 当栅栏的线程执行完毕以后，await才会结束阻塞
              */
             int await = cyclicBarrier.await();
             System.out.println("await方法释放阻塞后的操作" + id + "，成功通过栅栏，返回唯一到达索引号：" + await);
