@@ -8,6 +8,7 @@ import java.util.concurrent.CountDownLatch;
  * <p/>
  * 场景：
  * 计数器，当for循环真正执行完毕以后，在循环外输出count的数值
+ * 另见利用栅栏来进行求和的例子{@link com.liu.j2setest.thread.java并发编程实战.第二章线程安全.原子性}
  * <p/>
  * 定义：完成一组线程操作之前，允许之后的操作一直处于等待状态，直到这组操作执行完毕。
  * 闭锁最初处于封闭状态，每次调用countDown()方法，闭锁计数器都会-1，知道为0后，遇到await()方法，闭锁将会打开，然后开始执行
@@ -24,7 +25,7 @@ import java.util.concurrent.CountDownLatch;
  * 步，这种情况join是无法完成的。
  * http://blog.csdn.net/zhutulang/article/details/48504487
  */
-public class CountDownLatchTest {
+public class CountDownLatchSum {
 
     private static Integer count = 0;
 
@@ -34,7 +35,7 @@ public class CountDownLatchTest {
     }
 
     public static void main(String[] args) throws Exception {
-        CountDownLatchTest countTest = new CountDownLatchTest();
+        CountDownLatchSum countTest = new CountDownLatchSum();
         CountDownLatch countDownLatch = new CountDownLatch(1000);
         for (int i = 0; i < 1000; i++) {
             CountDownLatchThread countThread = new CountDownLatchThread(countTest, countDownLatch);
@@ -49,14 +50,14 @@ public class CountDownLatchTest {
 
 class CountDownLatchThread implements Runnable {
 
-    private CountDownLatchTest countTest;
+    private CountDownLatchSum countTest;
     private CountDownLatch countDownLatch;
 
 
     public CountDownLatchThread() {
     }
 
-    public CountDownLatchThread(CountDownLatchTest countTest, CountDownLatch countDownLatch) {
+    public CountDownLatchThread(CountDownLatchSum countTest, CountDownLatch countDownLatch) {
         this.countTest = countTest;
         this.countDownLatch = countDownLatch;
     }
