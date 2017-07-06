@@ -3,6 +3,7 @@ package com.liu.j2setest.designpattern.SingleTon;
 /**
  * Created by liuzhilei on 2017/1/6.
  * 静态内部类形式的单例模式
+ * 单例模式的最优解决办法
  */
 public class SingleTon5 {
 
