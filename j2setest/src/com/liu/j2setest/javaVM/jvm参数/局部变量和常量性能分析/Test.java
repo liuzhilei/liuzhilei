@@ -1,4 +1,4 @@
-package com.liu.j2setest.javaVM.局部变量和常量性能分析;
+package com.liu.j2setest.javaVM.jvm参数.局部变量和常量性能分析;
 
 /**
  * Created by liuzhilei on 2017/7/7.
