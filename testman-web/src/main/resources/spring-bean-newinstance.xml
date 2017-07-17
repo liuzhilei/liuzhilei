@@ -10,12 +10,26 @@
     <bean id="beanInstance1" class="com.liu.springtest.newinstancebean.BeanInstance1"/>
 
     <!--2.使用静态工厂实例化-->
-    <bean id="beanInstance2" class="com.liu.springtest.newinstancebean.BeanInstance2" factory-method="createInstance" lazy-init="true">
+    <bean id="beanInstance2" class="com.liu.springtest.newinstancebean.BeanInstance2" factory-method="createInstance"
+          lazy-init="true">
+        <!--指定静态工厂方法参数默认值-->
+        <constructor-arg index="0" value="hello spring"/>
         <property name="msg" value="刘志磊"/>
+        <property name="list">
+            <!--设置list属性的格式，如果不指定value-type，默认是String格式-->
+            <list value-type="java.lang.Integer">
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+            </list>
+        </property>
+        <!--对于Boolean类型，可以定义yes/no, on/off，true/false，1/0-->
+        <property name="flag" value="1"/>
+
     </bean>
 
     <!--3.使用实例工厂方法实例化-->
-    <bean id="beanInstance3Factory" class="com.liu.springtest.newinstancebean.BeanInstance3Factory" />
+    <bean id="beanInstance3Factory" class="com.liu.springtest.newinstancebean.BeanInstance3Factory"/>
     <bean id="beanInstance3" factory-bean="beanInstance3Factory" factory-method="createInstance"/>
 
 </beans>
