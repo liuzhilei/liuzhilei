@@ -9,10 +9,11 @@
     <import resource="spring-config-common.xml"/>
     <import resource="spring-config-dateSource.xml"/>
     <import resource="spring-config-dao.xml"/>
-    <import resource="transaction/spring-transaction1.xml"/>
+    <!--<import resource="transaction/spring-transaction1.xml"/>-->
 <!--    <import resource="transaction/spring-transaction2.xml"/>-->
     <!--<import resource="transaction/spring-transaction3.xml"/>-->
     <!--<import resource="transaction/spring-transaction4.xml"/>-->
     <!--<import resource="transaction/spring-transaction5.xml"/>-->
+    <import resource="transaction/spring-transaction-aspectJ.xml"/>
 
 </beans>

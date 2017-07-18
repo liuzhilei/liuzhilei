@@ -1,6 +1,7 @@
 package com.liu.controller;
 
 import com.liu.common.GameUser;
+import com.liu.service.gameswitch.SwitchService;
 import com.liu.service.user.UserService;
 import com.liu.service.user.impl.UserServiceImpl;
 import org.springframework.beans.factory.InitializingBean;
@@ -18,7 +19,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "/user")
-public class UserController  implements InitializingBean {
+public class UserController implements InitializingBean {
 
     private static int anInt = 0;
 
@@ -31,6 +32,8 @@ public class UserController  implements InitializingBean {
     @Autowired
     @Qualifier("userService")
     private UserService userService;
+    @Autowired
+    private SwitchService switchService;
 
     //@Autowired
     //private RequestMappingHandlerMapping requestMappingHandlerMapping;
@@ -68,6 +71,16 @@ public class UserController  implements InitializingBean {
     public String insertUser() {
         try {
             userService.insertUser();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "user";
+    }
+
+    @RequestMapping("/aspectJAdd.do")
+    public String aspectJInsertUser() {
+        try {
+            switchService.addSwitch();
         } catch (Exception e) {
             e.printStackTrace();
         }
