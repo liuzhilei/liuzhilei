@@ -1,17 +1,15 @@
 package com.liu.controller;
 
 import com.liu.common.GameUser;
-import com.liu.user.UserService;
+import com.liu.service.user.UserService;
+import com.liu.service.user.impl.UserServiceImpl;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -20,16 +18,25 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "/user")
-public class UserController {
+public class UserController  implements InitializingBean {
+
+    private static int anInt = 0;
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        anInt++;
+        System.out.println(this.getClass().getClassLoader().getClass().toString() + "======" + this.getClass().toString() + "==controller==" + anInt);
+    }
 
     @Autowired
     @Qualifier("userService")
     private UserService userService;
-    @Autowired
-    private RequestMappingHandlerMapping requestMappingHandlerMapping;
+
+    //@Autowired
+    //private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
     @RequestMapping("/getUsers.do")
-    /*@ResponseBody*/
+    @ResponseBody
     public String getUsers(GameUser gameUser, Map<String, Object> result) {
         /*ModelAndView result = new ModelAndView();
         List<GameUser> list = userService.queryListUsers(gameUser);
@@ -38,8 +45,10 @@ public class UserController {
         try {
             List<GameUser> list = userService.queryListUsers(gameUser);
             result.put("list", list);
+            /*
             StringBuilder sb = new StringBuilder();
             sb.append("URL").append("--").append("Class").append("--").append("Function").append('\n');
+            //获取controller中的所有方法
             Map<RequestMappingInfo, HandlerMethod> map = requestMappingHandlerMapping.getHandlerMethods();
             for (Map.Entry<RequestMappingInfo, HandlerMethod> m : map.entrySet()) {
                 RequestMappingInfo info = m.getKey();
@@ -48,7 +57,17 @@ public class UserController {
                 sb.append(method.getMethod().getDeclaringClass()).append("--");
                 sb.append(method.getMethod().getName()).append('\n');
             }
-            System.out.println(sb.toString());
+            System.out.println(sb.toString());*/
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "user";
+    }
+
+    @RequestMapping("/addUsers.do")
+    public String insertUser() {
+        try {
+            userService.insertUser();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+        >
+    <!--每个bean都有一个代理 没成功-->
+
+    <context:component-scan base-package="com.liu.*">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!--定义事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--<property name="dataSource" ref="gameDataSourcePool"/>-->
+    </bean>
+
+    <!--配置DAO-->
+    <bean id="userService" class="com.liu.service.user.impl.UserServiceImpl"/>
+
+    <bean id="userDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <!--配置事务管理器-->
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="userService"/>
+        <property name="proxyInterfaces" value="com.liu.service.user.UserService"/>
+        <!--配置事务属性-->
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+
+</beans>

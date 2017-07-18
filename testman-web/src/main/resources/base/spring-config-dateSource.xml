@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/tx
-       http://www.springframework.org/schema/tx/spring-tx-3.2.xsd"
-        >
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="gameDataSourcePool" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close">
@@ -29,21 +26,6 @@
         <property value="false" name="poolPreparedStatements"/>
         <property value="-1" name="maxPoolPreparedStatementPerConnectionSize"/>
         <property value="stat" name="filters"/>
-    </bean>
-
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <!-- 必选 spring 数据源引用-->
-        <property name="dataSource" ref="gameDataSourcePool"/>
-        <!-- 可选 Mybatis自身的配置文件，用来对mybatis进行配置，可添加别名，映射文件等-->
-        <property name="configLocation" value="classpath:mybatis-config.xml"/>
-    </bean>
-    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-        <constructor-arg index="0" ref="sqlSessionFactory"/>
-    </bean>
-
-    <tx:annotation-driven/>
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="gameDataSourcePool"/>
     </bean>
 
 

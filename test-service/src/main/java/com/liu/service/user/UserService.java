@@ -1,4 +1,4 @@
-package com.liu.user;
+package com.liu.service.user;
 
 
 import com.liu.common.GameUser;
@@ -12,5 +12,5 @@ public interface UserService {
 
     List<GameUser> queryListUsers(GameUser gameUser);
 
-    int addUser(GameUser gameUser);
+    int insertUser();
 }
