@@ -11,9 +11,9 @@
     <context:component-scan base-package="com.liu.*">
         <!--
             该配置文件是springMVC的配置文件，如果在这里没有过滤Service注解和Repository，那么他们就会被
-            servletContext初始化一次。如果在spring的配置文件中又不过滤，那么会让这些类通过spring的
-            applicationContext又初始化一次，这样会初始化两次。那么当配置事务的时候，就不是同一个类，所
-            以事务不可能生效。
+            WebApplicationContext初始化一次。WebApplicationContext是spring的ApplicationContext的子类，
+            如果在spring的配置文件中又不过滤，那么会让这些类通过spring的applicationContext又初始化一
+            次，这样会初始化两次。那么当配置事务的时候，就不是同一个类，所以事务不可能生效。
         -->
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
