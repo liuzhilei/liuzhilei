@@ -37,11 +37,11 @@ public class Main {
         allocateElements(10);
 
         System.out.println(5 & 3);
-        
 
 
+        System.out.println("基本类型数组：" + new int[2] instanceof Object);
 
-        System.out.println("基本类型数组："+new int[2] instanceof Object);
+        mapTest();
 
     }
 
@@ -76,6 +76,28 @@ public class Main {
                 initialCapacity >>>= 1;// Good luck allocating 2 ^ 30 elements
         }
         System.out.println("initialCapacity = " + initialCapacity);
+    }
+
+    public static void mapTest() {
+        Map<String, String> map = new HashMap();
+        map.put("1", "1");
+        map.put("2", "2");
+        map.put("3", "3");
+        map.put("4", "4");
+
+        Set<Map.Entry<String, String>> entries = map.entrySet();
+        for (Map.Entry entry : entries) {
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+        }
+
+        Set<String> strings = map.keySet();
+        Iterator<String> iterator = strings.iterator();
+
+
+        map.entrySet().iterator();
+
+
     }
 
 }
