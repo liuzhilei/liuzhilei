@@ -3,6 +3,7 @@
 会立即抛出java.util.ConcurrentModificationException异常，而不是等到遍历结束后再检查有没有问题
 
     原因：
+    Iterator实现类中有如下代码：
     final void checkForComodification() {
         if (modCount != expectedModCount)
             throw new ConcurrentModificationException();
