@@ -16,7 +16,7 @@ public class SingleTon5 {
     private SingleTon5() {
     }
 
-    public SingleTon5 getInstance() {
+    public static SingleTon5 getInstance() {
         return SingleTonHolder.instance;
     }
 
