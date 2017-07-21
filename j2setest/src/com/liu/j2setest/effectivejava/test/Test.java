@@ -5,7 +5,7 @@ package com.liu.j2setest.effectivejava.test;
  */
 public class Test {
 
-    private Test(){
+    public Test(){
         System.out.println("private");
     }
 
