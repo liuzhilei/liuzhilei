@@ -41,7 +41,17 @@ public class Main {
 
         System.out.println("基本类型数组：" + new int[2] instanceof Object);
 
-        mapTest();
+        //mapTest();
+
+        String str = "2";
+        System.out.println(str.hashCode());
+
+        Integer i = 2;
+        System.out.println(i.hashCode());
+
+        System.out.println("A".hashCode());
+        System.out.println("a".hashCode());
+        System.out.println("1".hashCode());
 
     }
 
@@ -93,9 +103,9 @@ public class Main {
 
         Set<String> strings = map.keySet();
         Iterator<String> iterator = strings.iterator();
-
-
-        map.entrySet().iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
 
 
     }
