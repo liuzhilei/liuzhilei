@@ -46,6 +46,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/aoptest/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-study/pom.xml" />
         <option value="$PROJECT_DIR$/springaoptest/pom.xml" />
       </set>
     </option>

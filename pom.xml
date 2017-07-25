@@ -19,7 +19,6 @@
         <module>spring-aop-test</module>
         <module>nettystudy</module>
         <module>jms-study</module>
-        <module>dubbo-study</module>
     </modules>
 
     <properties>
@@ -72,11 +71,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.18</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
