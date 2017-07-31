@@ -2,13 +2,14 @@ package com.liu.j2setest.constantspool;
 
 /**
  * Created by liuzhilei on 2017/2/13.
+ * java永久代(方法区)存放的数据包括：类信息、常量池、静态变量、JIT编译后的代码等数据
  */
 public class StaticTest {
-    private static int i = 1;
-    private static final Integer integer = 2;
-    private int a = 3;
-    private final int finala = 4;
-    private String str = "11111111111111";
+    private static int i = 1;//存放在方法区，但不是常量池。
+    private static final Integer integer = 2;//存放在方法区，但不是常量池
+    private int a = 3;//存放在堆中
+    private final int finala = 4;//存放在常量池中
+    private String str = "11111111111111";//存放在常量池中
 
     /**
      * 注意：
