@@ -11,7 +11,7 @@ public class RefrenceTest {
     public static void main(String[] args) {
         List<byte[]> list = new ArrayList<byte[]>();
         for (int i = 0; i < 1024; i++) {
-            list.add(new byte[1024*1024]);
+            list.add(new byte[1024 * 1024]);
         }
     }
 }

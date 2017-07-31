@@ -6,18 +6,18 @@ import java.util.List;
 
 /**
  * Created by liuzhilei on 2016/12/7.
- * 软引用
+ * 软引用，只有在内存不足的时候，jvm才会回收软引用对象
+ * 设置堆内存大小：-Xms2m -Xmx2m
+ * 下面代码会当空间不足，会进行垃圾回收，软引用会在内存不足的情况下被jvm回收
  */
 public class SoftReferenceTest {
     public static void main(String[] args) {
-        long stime = System.nanoTime();
-        List<SoftReference<byte[]>> list = new ArrayList<SoftReference<byte[]>>();
-        for (int i = 0; i < 1024; i++) {
-            list.add(new SoftReference<byte[]>(new byte[1024 * 1024]));
-
-            list.clear();
+        SoftReference<String>[] str = new SoftReference[100000];
+        for (int i = 0; i < str.length; i++) {
+            str[i] = new SoftReference<String>(new String("abc"));
         }
-        long etime = System.nanoTime();
-        System.out.println(etime - stime);
+        System.out.println(str[0].get());
+
+
     }
 }
