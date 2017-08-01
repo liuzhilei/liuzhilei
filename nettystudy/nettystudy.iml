@@ -64,5 +64,6 @@
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.7.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:3.2.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:3.2.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.caucho:hessian:4.0.38" level="project" />
   </component>
 </module>

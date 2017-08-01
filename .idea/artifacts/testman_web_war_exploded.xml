@@ -50,6 +50,10 @@
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.7.4" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:3.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:3.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.msgpack:msgpack:0.6.12" />
+          <element id="library" level="project" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" />
+          <element id="library" level="project" name="Maven: org.javassist:javassist:3.20.0-GA" />
+          <element id="library" level="project" name="Maven: com.caucho:hessian:4.0.38" />
         </element>
       </element>
       <element id="directory" name="META-INF">
