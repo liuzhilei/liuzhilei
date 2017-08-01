@@ -6,6 +6,7 @@ import org.msgpack.MessagePack;
 /**
  * Created by liuzhilei on 2017/8/1.
  * msgPack序列化方式，该类用于比较和hessian和java自带序列化后的字节长度
+ * msgPack序列化的时候，不会写入字段名称，会按照顺序写入值，可以想象成一个数组
  */
 public class MsgPackDemo {
     public static void main(String[] args) throws Exception {

@@ -11,6 +11,7 @@ import java.io.ByteArrayOutputStream;
 /**
  * Created by liuzhilei on 2017/8/1.
  * hessian序列化方式
+ * hessian序列化的时候，会写入字段名称，然后字段值，你可以想象为一个map
  */
 public class HessianDemo {
     public static void main(String[] args) throws Exception{
