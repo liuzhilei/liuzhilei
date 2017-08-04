@@ -29,8 +29,11 @@ public class CglibMain {
         enhancer.setSuperclass(programmer.getClass());
         //设置回调，相当于对代理类上所有非final的public方法的调用，都会调用callback，而callback都需要走intercept()进行拦截
         enhancer.setCallback(hacker);
+        //默认是true，如果设置为false，就可以不对构造方法进行拦截
+        enhancer.setInterceptDuringConstruction(false);
         CglibProgrammer o = (CglibProgrammer)enhancer.create();
         o.code();
+        //o.code1();
 
     }
 
