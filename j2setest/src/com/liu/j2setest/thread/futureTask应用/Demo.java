@@ -17,34 +17,37 @@ import java.util.concurrent.*;
  */
 public class Demo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Task task = new Task();
         ExecutorService executorService = Executors.newCachedThreadPool();
 
         /**
          * 第一种方式：Future+ExecutorService
          */
-        Future<Integer> future = executorService.submit(task);
+        /*Future<Integer> future = executorService.submit(task);
         try {
+            //线程池执行完以后就可以关闭，不用等待返回结果是否已经返回
+            executorService.shutdown();
             Thread.sleep(500);
             if (!future.isDone()) {
                 System.out.println("任务还没有完成");
             }
             System.out.println(future.get());
-            executorService.shutdown();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-        }
+        }*/
 
 
         /**
          * 第二种方式：FutureTask+ExecutorService
          */
-        /*FutureTask<Integer> futureTask = new FutureTask<Integer>(task);
+        FutureTask<Integer> futureTask = new FutureTask<Integer>(task);
         executorService.submit(futureTask);
-        executorService.shutdown();*/
+        //线程池执行完以后就可以关闭
+        executorService.shutdown();
+        System.out.println(futureTask.get());
 
         /**
          * 第三种方式：FutureTask+Thread
@@ -110,7 +113,7 @@ public class Demo {
     static class Task1 implements Runnable {
         @Override
         public void run() {
-            int i = 1 / 0;
+            //int i = 1 /
             System.out.println(111);
         }
     }
