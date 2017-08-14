@@ -6,12 +6,14 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd"
         >
 
+    <!-- 配置了数据源，事务以后，需要配置这个sqlSessionFactory，其作用是创建sqlSession -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 必选 spring 数据源引用-->
         <property name="dataSource" ref="gameDataSourcePool"/>
         <!-- 可选 Mybatis自身的配置文件，用来对mybatis进行配置，可添加别名，映射文件等-->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
+    <!-- 面向程序员的接口，根据sqlSessionFactory创建，作用是操作数据库增删改查 -->
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
