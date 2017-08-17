@@ -2,21 +2,23 @@ package com.liu.j2setest.thread.java多线程编程核心技术.第三章线程�
 
 /**
  * Created by liuzhilei on 2017/3/22.
+ * 对于threadlocal，每个线程会创建一个threadlocalmap，虽然map由默认16长度的entry数组构成，但是重复set，会覆盖原set的值，因为通过hash定位的数组索引是一样的
  */
 public class ThreadLocalTest {
     public static void main(String[] args) {
         Thread thread = new ThreadTest1Thread1();
         thread.start();
-        /*try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
         Thread thread1 = new ThreadTest1Thread2();
         thread1.start();
 
         Tools tools = new Tools();
         System.out.println("Tools的默认值是：" + tools.get());
+
+        try {
+            Thread.sleep(100000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 }
@@ -38,15 +40,13 @@ class Tools extends ThreadLocal {
 class ThreadTest1Thread1 extends Thread {
     @Override
     public void run() {
+        Tools.t1.set("ThreadA");
         try {
-            for (int i = 0; i < 10; i++) {
-                Tools.t1.set("ThreadA :" + (i + 1));
-                Thread.sleep(200);
-                System.out.println("ThreadA get value:" + Tools.t1.get());
-            }
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        Tools.t1.set("ThreadA1");
     }
 }
 
@@ -54,13 +54,10 @@ class ThreadTest1Thread2 extends Thread {
     @Override
     public void run() {
         try {
-            for (int i = 0; i < 10; i++) {
-                Tools.t1.set("ThreadB :" + (i + 1));
-                Thread.sleep(200);
-                System.out.println("ThreadB get value:" + Tools.t1.get());
-            }
+            Thread.sleep(30000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        Tools.t1.set("ThreadB");
     }
 }
