@@ -112,7 +112,7 @@ public class QBorrower {
     public static void main(String[] args) {
         String connectionFactory = "java:comp/env/queue/connectionFactory";
         String requestQueue = "java:comp/env/queue/queue0";
-        String responseQueue = "java:comp/env/queue/queue0";
+        String responseQueue = "java:comp/env/queue/queue1";
 
         QBorrower borrower = new QBorrower(connectionFactory, requestQueue, responseQueue);
 
