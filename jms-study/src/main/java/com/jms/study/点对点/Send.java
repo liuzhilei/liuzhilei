@@ -1,5 +1,6 @@
 package com.jms.study.点对点;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Service;
 
 import javax.jms.*;
@@ -39,6 +40,9 @@ public class Send extends HttpServlet {
             queueSender.send(textMessage);
 
             writer.write("message sent: " + textMessage.getText());
+
+            ConnectionMetaData metaData = queueConnection.getMetaData();
+            System.out.println("JMS的一些有用信息：" + JSON.toJSONString(metaData));
 
             queueConnection.close();
 

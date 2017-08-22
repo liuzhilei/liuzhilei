@@ -24,6 +24,13 @@
             <version>5.14.5</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.37</version>
+        </dependency>
+
+
     </dependencies>
     <build>
         <finalName>jms-study</finalName>
