@@ -52,13 +52,15 @@ public class QBorrower {
             //现在完成创建，启动连接。如果只是发送消息，就不需要启动该连接，一般推荐启动
             connection.start();
 
-            //这是获取连接的元数据，ConnectionMetaData包含了jms版本，jsm提供者名称等有用信息
+            //这是获取连接的元数据，ConnectionMetaData包含了jms版本，jms提供者名称等有用信息
             ConnectionMetaData metaData = connection.getMetaData();
             System.out.println("JMS的一些有用信息：" + JSON.toJSONString(metaData));
         } catch (NamingException e) {
             e.printStackTrace();
+            System.exit(1);
         } catch (JMSException e) {
             e.printStackTrace();
+            System.exit(1);
         }
     }
 
@@ -75,7 +77,7 @@ public class QBorrower {
             mapMessage.setDouble("salary", salary);
             mapMessage.setDouble("loanAmount", loanAmt);
             /**
-             * 为响应队列设置JSMReplyTo属性，进一步解除生产者和消费者之间的耦合
+             * 为响应队列设置JMSReplyTo属性，进一步解除生产者和消费者之间的耦合
              * 在使用请求/应答模式的时候，通常在消息生产者中设置JMSReplyTo头属性，而不是在消息消费者指定应答队列，
              */
             mapMessage.setJMSReplyTo(responseQ);
