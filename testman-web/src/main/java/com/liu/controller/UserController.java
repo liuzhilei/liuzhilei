@@ -3,10 +3,13 @@ package com.liu.controller;
 import com.liu.common.GameUser;
 import com.liu.service.gameswitch.SwitchService;
 import com.liu.service.user.UserService;
+import com.liu.service.user.impl.DynamicAutowired;
 import com.liu.service.user.impl.UserServiceImpl;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,6 +37,8 @@ public class UserController implements InitializingBean {
     private UserService userService;
     @Autowired
     private SwitchService switchService;
+
+    private DynamicAutowired dynamicAutowired;
 
     //@Autowired
     //private RequestMappingHandlerMapping requestMappingHandlerMapping;
@@ -67,6 +72,7 @@ public class UserController implements InitializingBean {
         return "user";
     }
 
+
     @RequestMapping("/addUsers.do")
     public String insertUser() {
         try {
@@ -86,4 +92,21 @@ public class UserController implements InitializingBean {
         }
         return "user";
     }
+
+    @RequestMapping("/dynamic.do")
+    public String dynamicAutowired(String route) {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("base/spring-dynamicAutowired.xml");
+        dynamicAutowired = (DynamicAutowired) applicationContext.getBean("dynamicAutowired_" + route);
+        dynamicAutowired.outPut();
+
+        return "";
+    }
+
+    public static void main(String[] args) {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("base/spring-dynamicAutowired.xml");
+        DynamicAutowired dynamicAutowired = (DynamicAutowired) applicationContext.getBean("dynamicAutowired_1");
+        dynamicAutowired.outPut();
+
+    }
+
 }
