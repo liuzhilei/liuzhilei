@@ -13,6 +13,10 @@ import java.io.InputStreamReader;
 /**
  * Created by liuzhilei on 2017/8/23.
  * 监听贷款申请队列上的贷款请求，判断工资额是否满足必要的商业要求，并最终将结果发回给借款方
+ * <p/>
+ * 该消费者实现了MessageListener接口监听消息，为异步方式
+ * 如果消费者使用receive()方法，就是同步方式。例如{@link com.jms.study.点对点.demo.QBorrower#sendLoanRequest(double, double)}的
+ * receive()，就是在同步等待QLender给QBorrower回复响应消息
  */
 public class QLender implements MessageListener {
 
