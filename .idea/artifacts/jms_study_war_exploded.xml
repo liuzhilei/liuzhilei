@@ -43,6 +43,7 @@
           <element id="library" level="project" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" />
           <element id="library" level="project" name="Maven: org.javassist:javassist:3.20.0-GA" />
           <element id="library" level="project" name="Maven: com.caucho:hessian:4.0.38" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
