@@ -1,5 +1,7 @@
 package com.liu.j2setest;
 
+import com.liu.j2setest.序列化.Person;
+
 import java.io.IOException;
 import java.nio.channels.ServerSocketChannel;
 import java.util.*;
@@ -16,42 +18,60 @@ public class Main {
     private static final Object myLock = new Object();
 
     public static void main(String[] args) {
+
+        System.out.println(args[0]);
+        System.out.println(args[1]);
+
         String string = "";
         System.out.println(Runtime.getRuntime().availableProcessors());
 
-        ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap();
-        concurrentHashMap.get("");
+        List<Person> list1 = new ArrayList<Person>();
+        List<Person> list2 = new ArrayList<Person>();
 
-        HashMap map = new HashMap();
+        Person person = new Person();
+        person.setAge(1);
+        person.setName("123");
+        person.setNo(1);
+
+        Person person1 = new Person();
+        person1.setAge(1);
+        person1.setName("123");
+        person1.setNo(2);
+
+        Person person3 = new Person();
+        person3.setAge(3);
+        person3.setName("3");
+        person3.setNo(3);
+
+        Person person4 = new Person();
+        person4.setAge(4);
+        person4.setName("4");
+        person4.setNo(4);
+
+        Person person5 = new Person();
+        person5.setAge(5);
+        person5.setName("5");
+        person5.setNo(5);
 
 
-        ArrayList list = new ArrayList();
-        Iterator iterator = list.iterator();
+        list1.add(person);
+        list1.add(person1);
+        list1.add(person4);
+        list1.add(person5);
+        list1.add(person3);
 
 
-        LinkedList linkedList = new LinkedList();
-        linkedList.offer("");
-        linkedList.add("");
-        //Queue queue = new
-
-        allocateElements(10);
-
-        System.out.println(5 & 3);
+        list2.add(person1);
+        list2.add(person);
+        list2.add(person5);
+        list2.add(person4);
+        list2.add(person3);
 
 
-        System.out.println("基本类型数组：" + new int[2] instanceof Object);
+        System.out.println(list1.equals(list2));
 
-        //mapTest();
+        System.out.println(person.equals(person1));
 
-        String str = "2";
-        System.out.println(str.hashCode());
-
-        Integer i = 2;
-        System.out.println(i.hashCode());
-
-        System.out.println("A".hashCode());
-        System.out.println("a".hashCode());
-        System.out.println("1".hashCode());
 
     }
 
@@ -103,7 +123,7 @@ public class Main {
 
         Set<String> strings = map.keySet();
         Iterator<String> iterator = strings.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
 
