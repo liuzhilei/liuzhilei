@@ -25,53 +25,12 @@ public class Main {
         String string = "";
         System.out.println(Runtime.getRuntime().availableProcessors());
 
-        List<Person> list1 = new ArrayList<Person>();
+        List<Person> list1 = null;
         List<Person> list2 = new ArrayList<Person>();
 
-        Person person = new Person();
-        person.setAge(1);
-        person.setName("123");
-        person.setNo(1);
 
-        Person person1 = new Person();
-        person1.setAge(1);
-        person1.setName("123");
-        person1.setNo(2);
-
-        Person person3 = new Person();
-        person3.setAge(3);
-        person3.setName("3");
-        person3.setNo(3);
-
-        Person person4 = new Person();
-        person4.setAge(4);
-        person4.setName("4");
-        person4.setNo(4);
-
-        Person person5 = new Person();
-        person5.setAge(5);
-        person5.setName("5");
-        person5.setNo(5);
-
-
-        list1.add(person);
-        list1.add(person1);
-        list1.add(person4);
-        list1.add(person5);
-        list1.add(person3);
-
-
-        list2.add(person1);
-        list2.add(person);
-        list2.add(person5);
-        list2.add(person4);
-        list2.add(person3);
-
-
-        System.out.println(list1.equals(list2));
-
-        System.out.println(person.equals(person1));
-
+        Set<Person> set = new HashSet<Person>(list2);
+        System.out.println(set.size());
 
     }
 
