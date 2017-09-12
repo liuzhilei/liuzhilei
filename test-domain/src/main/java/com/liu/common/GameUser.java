@@ -100,4 +100,16 @@ public class GameUser implements Serializable{
     public void setCreated(Date created) {
         this.created = created;
     }
+
+    @Override
+    public String toString() {
+        return "GameUser{" +
+                "id=" + id +
+                ", userPin='" + userPin + '\'' +
+                ", mobilePhone='" + mobilePhone + '\'' +
+                ", yn=" + yn +
+                ", modified=" + modified +
+                ", created=" + created +
+                '}';
+    }
 }
