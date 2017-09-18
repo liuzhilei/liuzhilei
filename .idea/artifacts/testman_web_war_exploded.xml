@@ -24,7 +24,6 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:3.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:3.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:3.2.4.RELEASE" />
-          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:3.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:3.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:3.2.4.RELEASE" />
@@ -37,6 +36,8 @@
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.9" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:3.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:3.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jms:3.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
           <element id="library" level="project" name="Maven: tomcat:servlet:4.0.6" />
           <element id="library" level="project" name="Maven: cglib:cglib:3.2.0" />
           <element id="library" level="project" name="Maven: org.ow2.asm:asm:5.0.3" />

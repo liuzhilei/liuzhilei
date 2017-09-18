@@ -28,7 +28,7 @@ public class MybatisTest {
         String resource = "mybatisStudy/mybatis.xml";
         //封装文件
         Reader reader = Resources.getResourceAsReader(resource);
-        //开始启动
+        //开始启动，build方法触发了mybatis的启动
         SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(reader);
 
         SqlSession sqlSession = ssf.openSession();

@@ -2,6 +2,7 @@ package com.liu.j2setest;
 
 import com.liu.j2setest.序列化.Person;
 
+import javax.xml.bind.SchemaOutputResolver;
 import java.io.IOException;
 import java.nio.channels.ServerSocketChannel;
 import java.util.*;
@@ -19,7 +20,27 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println(args[0]);
+/*        String string = "1,2,liuzhilei,3,4,api.rd";
+
+        String c = "liuzhile";
+
+        System.out.println(string.contains("," + c + ","));
+
+
+        List list  = Arrays.asList(string.split(","));
+
+        System.out.println(list.get(1));
+
+        System.out.println(list.contains("liuzh"));*/
+
+        /*String sss = "";
+        List<String> lll = Arrays.asList(sss.split(","));
+        System.out.println(lll.contains("123"));
+*/
+
+        System.out.println(65211%10000);
+
+      /*  System.out.println(args[0]);
         System.out.println(args[1]);
 
         String string = "";
@@ -30,7 +51,11 @@ public class Main {
 
 
         Set<Person> set = new HashSet<Person>(list2);
-        System.out.println(set.size());
+        System.out.println(set.size());*/
+
+
+        String string = "245445656";
+        System.out.println(string.hashCode());
 
     }
 
