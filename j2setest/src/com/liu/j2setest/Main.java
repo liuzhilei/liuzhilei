@@ -1,15 +1,11 @@
 package com.liu.j2setest;
 
-import com.liu.j2setest.序列化.Person;
-
-import javax.xml.bind.SchemaOutputResolver;
 import java.io.IOException;
 import java.nio.channels.ServerSocketChannel;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.BlockingQueue;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by liuzhilei on 2017/1/10.
@@ -38,7 +34,7 @@ public class Main {
         System.out.println(lll.contains("123"));
 */
 
-        System.out.println(65211%10000);
+        //System.out.println(65211 % 10000);
 
       /*  System.out.println(args[0]);
         System.out.println(args[1]);
@@ -53,9 +49,18 @@ public class Main {
         Set<Person> set = new HashSet<Person>(list2);
         System.out.println(set.size());*/
 
-
+/*
         String string = "245445656";
         System.out.println(string.hashCode());
+
+        Map<String, String> map = new HashMap<String, String>();
+        System.out.println(map.get("key") == null);*/
+
+        //chuguannew();
+
+        //qingdan();
+
+        transfer();
 
     }
 
@@ -112,6 +117,28 @@ public class Main {
         }
 
 
+    }
+
+
+    public static void chuguannew() {
+        for (int i = 0; i <= 160; i++) {
+            String str = "ALTER TABLE `jd_chuguan_new_" + i + "` ADD INDEX idx_busiNo_typeId(`BusiNo`,`TypeID`);";
+            System.out.println(str);
+        }
+    }
+
+    public static void qingdan() {
+        for (int i = 0; i <= 160; i++) {
+            String str = "ALTER TABLE `jd_qingdan_" + i + "` ADD INDEX idx_kdanhao(`kdanhao`);";
+            System.out.println(str);
+        }
+    }
+
+    public static void transfer() {
+        for (int i = 1; i <= 32; i++) {
+            String str = "ALTER TABLE `jd_chuguan_transfer_" + i + "` ADD INDEX idx_kdanhao(`kdanhao`);";
+            System.out.println(str);
+        }
     }
 
 }
