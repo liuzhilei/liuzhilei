@@ -10,6 +10,7 @@ public class StaticTest {
     private int a = 3;//存放在堆中
     private final int finala = 4;//存放在常量池中
     private String str = "11111111111111";//存放在常量池中
+    private static final int b = 5; //常量池
 
     /**
      * 注意：

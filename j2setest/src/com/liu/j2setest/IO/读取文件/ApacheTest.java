@@ -13,6 +13,7 @@ import java.io.IOException;
 public class ApacheTest {
     public static void main(String[] args) {
         File file = new File("D:/test.txt");
+        System.out.println("使用lineIterator适用于读取大文件：");
         LineIterator iterator = null;
         try {
             iterator = FileUtils.lineIterator(file, "utf-8");
@@ -27,6 +28,13 @@ public class ApacheTest {
                 iterator.close();
             }
         }
-
+        System.out.println("-----------------------------------");
+        System.out.println("使用readFileToString将文件全部读入：");
+        try {
+            String string = FileUtils.readFileToString(file);
+            System.out.println(string);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
