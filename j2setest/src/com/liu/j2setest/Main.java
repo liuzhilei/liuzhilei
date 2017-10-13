@@ -1,11 +1,12 @@
 package com.liu.j2setest;
 
+import com.liu.j2setest.reflect.demo4.User;
+import com.liu.j2setest.thread.java多线程编程核心技术.第四章lock的使用.使用ReentrantLock类.condition.useConditionWaitNotify.Run;
+
 import java.io.IOException;
 import java.nio.channels.ServerSocketChannel;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by liuzhilei on 2017/1/10.
@@ -15,54 +16,21 @@ public class Main {
     private static final Object myLock = new Object();
 
     public static void main(String[] args) {
-
-/*        String string = "1,2,liuzhilei,3,4,api.rd";
-
-        String c = "liuzhile";
-
-        System.out.println(string.contains("," + c + ","));
-
-
-        List list  = Arrays.asList(string.split(","));
-
-        System.out.println(list.get(1));
-
-        System.out.println(list.contains("liuzh"));*/
-
-        /*String sss = "";
-        List<String> lll = Arrays.asList(sss.split(","));
-        System.out.println(lll.contains("123"));
-*/
-
-        //System.out.println(65211 % 10000);
-
-      /*  System.out.println(args[0]);
-        System.out.println(args[1]);
-
-        String string = "";
-        System.out.println(Runtime.getRuntime().availableProcessors());
-
-        List<Person> list1 = null;
-        List<Person> list2 = new ArrayList<Person>();
-
-
-        Set<Person> set = new HashSet<Person>(list2);
-        System.out.println(set.size());*/
-
-/*
-        String string = "245445656";
-        System.out.println(string.hashCode());
-
-        Map<String, String> map = new HashMap<String, String>();
-        System.out.println(map.get("key") == null);*/
-
         //chuguannew();
-
         //qingdan();
-
         transfer();
-
     }
+
+    public static List<User> getUser() {
+        List<User> list = new ArrayList<User>();
+        for (int i = 0; i < 11000; i++) {
+            User user = new User();
+            user.setAge(i);
+            list.add(user);
+        }
+        return list;
+    }
+
 
     public void test() {
         try {
@@ -121,22 +89,22 @@ public class Main {
 
 
     public static void chuguannew() {
-        for (int i = 0; i <= 160; i++) {
-            String str = "ALTER TABLE `jd_chuguan_new_" + i + "` ADD INDEX idx_busiNo_typeId(`BusiNo`,`TypeID`);";
+        for (int i = 1; i <= 160; i++) {
+            String str = "ALTER TABLE `jd_chuguan_new_" + i + "` ADD INDEX idx_createdate(`creatdate`);";
             System.out.println(str);
         }
     }
 
     public static void qingdan() {
-        for (int i = 0; i <= 160; i++) {
-            String str = "ALTER TABLE `jd_qingdan_" + i + "` ADD INDEX idx_kdanhao(`kdanhao`);";
+        for (int i = 1; i <= 160; i++) {
+            String str = "ALTER TABLE `jd_qingdan_" + i + "` ADD INDEX idx_createdate(`creatdate`);";
             System.out.println(str);
         }
     }
 
     public static void transfer() {
         for (int i = 1; i <= 32; i++) {
-            String str = "ALTER TABLE `jd_chuguan_transfer_" + i + "` ADD INDEX idx_kdanhao(`kdanhao`);";
+            String str = "ALTER TABLE `jd_chuguan_transfer_" + i + "` ADD INDEX idx_createdate(`CreateDate`);";
             System.out.println(str);
         }
     }

@@ -202,13 +202,19 @@
             <version>4.0.38</version>
         </dependency>
 
+        <!--apache common 工具包-->
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
             <version>3.2.1</version>
         </dependency>
 
-
+        <!--guava 工具包-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>11.0.1</version>
+        </dependency>
 
     </dependencies>
 
