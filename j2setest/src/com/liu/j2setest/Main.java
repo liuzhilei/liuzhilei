@@ -1,12 +1,13 @@
 package com.liu.j2setest;
 
+import com.alibaba.fastjson.JSON;
+import com.liu.j2setest.compare.Person;
 import com.liu.j2setest.reflect.demo4.User;
-import com.liu.j2setest.thread.java多线程编程核心技术.第四章lock的使用.使用ReentrantLock类.condition.useConditionWaitNotify.Run;
+import com.liu.j2setest.serializable.serializableUtilTest.FastJsonTest;
 
 import java.io.IOException;
 import java.nio.channels.ServerSocketChannel;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by liuzhilei on 2017/1/10.
@@ -16,9 +17,17 @@ public class Main {
     private static final Object myLock = new Object();
 
     public static void main(String[] args) {
-        //chuguannew();
-        //qingdan();
-        transfer();
+
+        List list = new ArrayList();
+
+        FastJsonTest fastJsonTest = new FastJsonTest();
+        fastJsonTest.setAge("1");
+
+        System.out.println(JSON.toJSONString(fastJsonTest));
+
+        Person person = new Person(1, "1", 1);
+
+        System.out.println(JSON.toJSONString(person));
     }
 
     public static List<User> getUser() {

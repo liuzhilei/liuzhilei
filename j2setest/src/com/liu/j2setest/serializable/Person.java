@@ -1,4 +1,4 @@
-package com.liu.j2setest.序列化;
+package com.liu.j2setest.serializable;
 
 import org.msgpack.annotation.Message;
 

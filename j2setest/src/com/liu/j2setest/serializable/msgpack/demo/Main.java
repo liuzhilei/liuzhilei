@@ -1,6 +1,6 @@
-package com.liu.j2setest.序列化.msgpack.demo;
+package com.liu.j2setest.serializable.msgpack.demo;
 
-import com.liu.j2setest.序列化.Person;
+import com.liu.j2setest.serializable.Person;
 import org.msgpack.MessagePack;
 
 /**

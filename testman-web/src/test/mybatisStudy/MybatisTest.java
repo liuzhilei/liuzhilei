@@ -1,5 +1,6 @@
 package mybatisStudy;
 
+import com.alibaba.fastjson.JSON;
 import com.liu.common.GameUser;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -38,6 +39,16 @@ public class MybatisTest {
         GameUser user1 = (GameUser) sqlSession.selectOne("selectById", 89);
         System.out.println("第二次查询第一个用户：" + user);
 
+    }
+
+    @Test
+    public void parseTest(){
+        GameUser user = new GameUser();
+        user.setMobilePhone("12");
+        user.setUserPin("1212");
+
+
+        System.out.println(JSON.toJSONString(user));
     }
 
 }

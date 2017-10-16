@@ -1,6 +1,6 @@
-package com.liu.j2setest.序列化.javaSerializable;
+package com.liu.j2setest.serializable.javaSerializable;
 
-import com.liu.j2setest.序列化.Person;
+import com.liu.j2setest.serializable.Person;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

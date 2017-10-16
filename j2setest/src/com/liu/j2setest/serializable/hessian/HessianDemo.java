@@ -1,9 +1,8 @@
-package com.liu.j2setest.序列化.hessian;
+package com.liu.j2setest.serializable.hessian;
 
-import com.caucho.hessian.io.Hessian2Output;
 import com.caucho.hessian.io.HessianInput;
 import com.caucho.hessian.io.HessianOutput;
-import com.liu.j2setest.序列化.Person;
+import com.liu.j2setest.serializable.Person;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
