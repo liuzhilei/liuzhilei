@@ -1,6 +1,8 @@
 package com.liu.j2setest.thread.java并发编程实战.第二章线程安全.原子性;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by liuzhilei on 2017/3/12.
@@ -35,15 +37,20 @@ public class CountDownLatchSum {
     }
 
     public static void main(String[] args) throws Exception {
-        CountDownLatchSum countTest = new CountDownLatchSum();
-        CountDownLatch countDownLatch = new CountDownLatch(1000);
-        for (int i = 0; i < 1000; i++) {
-            CountDownLatchThread countThread = new CountDownLatchThread(countTest, countDownLatch);
-            Thread thread = new Thread(countThread);
-            thread.start();
+        ExecutorService executorService = Executors.newFixedThreadPool(20);
+        try {
+            CountDownLatchSum countTest = new CountDownLatchSum();
+            CountDownLatch countDownLatch = new CountDownLatch(1000);
+            for (int i = 0; i < 1000; i++) {
+                CountDownLatchThread countThread = new CountDownLatchThread(countTest, countDownLatch);
+                executorService.execute(countThread);
+            }
+            countDownLatch.await();
+            System.out.println(count);
+        }finally {
+            executorService.shutdown();
         }
-        countDownLatch.await();
-        System.out.println(count);
+
     }
 
 }
