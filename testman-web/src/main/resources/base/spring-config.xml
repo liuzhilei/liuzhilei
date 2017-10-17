@@ -17,5 +17,6 @@
     <!--<import resource="transaction/spring-aop-aspectJ.xml"/>-->
 
     <import resource="spring-dynamicAutowired.xml"/>
+    <import resource="spring-threadpool.xml"/>
 
 </beans>
