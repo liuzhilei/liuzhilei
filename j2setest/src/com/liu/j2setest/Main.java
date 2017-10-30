@@ -7,6 +7,8 @@ import com.liu.j2setest.serializable.serializableUtilTest.FastJsonTest;
 
 import java.io.IOException;
 import java.nio.channels.ServerSocketChannel;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -18,16 +20,18 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List list = new ArrayList();
+        //transfer();
+        String str = "2000-00-00 00:00:00";
 
-        FastJsonTest fastJsonTest = new FastJsonTest();
-        fastJsonTest.setAge("1");
+        //Date date1 = new Date("2000-01-01 00:00:00");
+        //System.out.println(date1);
 
-        System.out.println(JSON.toJSONString(fastJsonTest));
+        Date date = StrToDate("2000-01-01 00:00:00");
+        Date date1 = StrToDate("0000-00-00 00:00:00");
+        System.out.println(date);
 
-        Person person = new Person(1, "1", 1);
+        System.out.println(date1);
 
-        System.out.println(JSON.toJSONString(person));
     }
 
     public static List<User> getUser() {
@@ -99,7 +103,7 @@ public class Main {
 
     public static void chuguannew() {
         for (int i = 1; i <= 160; i++) {
-            String str = "ALTER TABLE `jd_chuguan_new_" + i + "` ADD INDEX idx_createdate(`creatdate`);";
+            String str = "ALTER TABLE `jd_chuguan_transfer_" + i + "` ADD INDEX idx_createdate(`creatdate`);";
             System.out.println(str);
         }
     }
@@ -113,9 +117,38 @@ public class Main {
 
     public static void transfer() {
         for (int i = 1; i <= 32; i++) {
-            String str = "ALTER TABLE `jd_chuguan_transfer_" + i + "` ADD INDEX idx_createdate(`CreateDate`);";
+            String str = "ALTER TABLE `jd_chuguan_transfer_" + i + "` ADD INDEX idx_yuandanhao(`yuandanhao`);";
             System.out.println(str);
         }
+    }
+
+    /**
+     * 日期转换成字符串
+     * @param date
+     * @return str
+     */
+    public static String DateToStr(Date date) {
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String str = format.format(date);
+        return str;
+    }
+
+    /**
+     * 字符串转换成日期
+     * @param str
+     * @return date
+     */
+    public static Date StrToDate(String str) {
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = null;
+        try {
+            date = format.parse(str);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 
 }
