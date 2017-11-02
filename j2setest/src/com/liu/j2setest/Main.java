@@ -20,6 +20,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        String s = "";
+
         //transfer();
         String str = "2000-00-00 00:00:00";
 

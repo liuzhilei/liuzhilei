@@ -15,6 +15,9 @@ package com.liu.j2setest.javaVM.jvm参数;
  * -XX:+CITime显示编译时间
  * -XX:+PrintCompilation 和 -XX:+CITime 可以一起使用，更好的理解JIT编译器
  * 如果配置为 -Xint -XX:+PrintCompilation -XX:+CITime，那么编译时间会显示为0，因为是字节码解释运行，不需要编译
+ *
+ * C1就是普通编译，编译成字节码
+ * C2就是jit编译，编译成机器码
  */
 public class test {
     public static void main(String[] args) {
