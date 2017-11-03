@@ -18,21 +18,14 @@ public class Main {
 
     private static final Object myLock = new Object();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        String s = "";
+        long start = System.currentTimeMillis();
+        Thread.sleep(1000);
+        long end = System.currentTimeMillis();
 
-        //transfer();
-        String str = "2000-00-00 00:00:00";
+        System.out.println((end - start));
 
-        //Date date1 = new Date("2000-01-01 00:00:00");
-        //System.out.println(date1);
-
-        Date date = StrToDate("2000-01-01 00:00:00");
-        Date date1 = StrToDate("0000-00-00 00:00:00");
-        System.out.println(date);
-
-        System.out.println(date1);
 
     }
 
