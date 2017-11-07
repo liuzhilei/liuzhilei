@@ -17,7 +17,7 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <!--启用aspectj对注解的支持-->
+    <!--启用aspectj对注解的支持 proxy-target-class="true" 为使用cglib，false是用jdk动态代理，默认就是使用jdk的动态代理-->
     <aop:aspectj-autoproxy/>
 
     <!--mode默认是proxy，指定成aspectj模式 -->

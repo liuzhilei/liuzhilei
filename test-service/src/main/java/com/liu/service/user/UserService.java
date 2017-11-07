@@ -13,4 +13,8 @@ public interface UserService {
     List<GameUser> queryListUsers(GameUser gameUser);
 
     int insertUser();
+
+    void testA();
+
+    void testB();
 }

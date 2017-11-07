@@ -5,10 +5,12 @@ import com.liu.common.GameUser;
 import com.liu.service.user.UserService;
 import com.liu.test.gameuser.GameUserDao;
 import com.liu.test.switchbutton.SwitchDao;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -52,7 +54,7 @@ public class UserServiceImpl implements UserService, InitializingBean {
     }
 
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRED)
     public int insertUser() {
         System.out.println(this.getClass());
         int i;
@@ -68,6 +70,23 @@ public class UserServiceImpl implements UserService, InitializingBean {
             throw new RuntimeException(e);
         }
         return i;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void testA(){
+        this.testB();//todo 注意：执行该方法，testb的事务不会生效，需要拿到该类的代理类才能生效
+        /**
+         * xml文件中添加 <aop:aspectj-autoproxy />
+         * 然后获取到该类的代理类，就可以使用下面的事务
+         */
+        ((UserService)AopContext.currentProxy()).testB();// 这样对于B的事务注解，就可以正常执行
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void testB(){
+
     }
 
     @Override
