@@ -1,4 +1,4 @@
-package com.liu.j2setest.java集合.利用map实现LRU;
+package com.liu.j2setest.collection.利用map实现LRU;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

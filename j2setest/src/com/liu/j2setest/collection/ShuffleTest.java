@@ -1,4 +1,4 @@
-package com.liu.j2setest.collectionstest;
+package com.liu.j2setest.collection;
 
 import java.util.ArrayList;
 import java.util.Collections;
