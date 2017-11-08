@@ -20,11 +20,32 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        long start = System.currentTimeMillis();
+       /* long start = System.currentTimeMillis();
         Thread.sleep(1000);
         long end = System.currentTimeMillis();
 
         System.out.println((end - start));
+        */
+
+        /*Set<String> set = new HashSet<String>();
+        set.add(null);
+        set.add("1");
+
+        System.out.println(set.size());
+
+        Map<String, String> map = new HashMap<String, String>();
+        map.put(null, "124");
+        map.put("1", null);
+        System.out.println(map.get(null));
+        System.out.println(map.get("1"));
+
+        List<String > list = new ArrayList<String>();
+        list.add(null);
+        System.out.println(list.get(0));*/
+
+        Set<String > treeSet = new TreeSet<String>();
+        treeSet.add(null);
+        System.out.println(treeSet.size());
 
 
     }
@@ -119,6 +140,7 @@ public class Main {
 
     /**
      * 日期转换成字符串
+     *
      * @param date
      * @return str
      */
@@ -131,6 +153,7 @@ public class Main {
 
     /**
      * 字符串转换成日期
+     *
      * @param str
      * @return date
      */
