@@ -10,6 +10,7 @@ import java.nio.channels.ServerSocketChannel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by liuzhilei on 2017/1/10.
@@ -43,9 +44,11 @@ public class Main {
         list.add(null);
         System.out.println(list.get(0));*/
 
-        Set<String > treeSet = new TreeSet<String>();
+       /* Set<String > treeSet = new TreeSet<String>();
         treeSet.add(null);
-        System.out.println(treeSet.size());
+        System.out.println(treeSet.size());*/
+
+        System.out.println(TimeUnit.MILLISECONDS.toNanos(1));
 
 
     }
