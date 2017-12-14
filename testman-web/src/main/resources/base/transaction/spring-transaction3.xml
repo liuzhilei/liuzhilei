@@ -15,7 +15,7 @@
 
     <!-- 定义事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="gameDataSourcePool"/>
+        <!--<property name="dataSource" ref="gameDataSourcePool"/>-->
     </bean>
 
     <bean id="transactionBase" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
