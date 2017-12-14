@@ -20,4 +20,31 @@
     
     <bean id="initSequenceBean" class="com.liu.springtest.lifecycletest.InitSequenceBean" init-method="initMethod"/>
 
+
+    <!-- 属性编辑器的学习 start-->
+    <bean id="userManager" class="com.liu.springtest.springPropertyEditor.UserManager">
+        <property name="dataValue" value="2017-12-14"/><!--dataValue是date类型，这里直接指定为string类型，会有类型转换错误-->
+    </bean>
+
+    <!-- 第一种方法：解决类型转换错误 -->
+    <!--<bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="java.util.Date">
+                    <bean class="com.liu.springtest.springPropertyEditor.method1"/>
+                </entry>
+            </map>
+        </property>
+    </bean>-->
+
+    <!--第二种方法：注册spring自带的属性编辑器-->
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="propertyEditorRegistrars">
+            <list>
+                <bean class="com.liu.springtest.springPropertyEditor.method2"/>
+            </list>
+        </property>
+    </bean>
+    <!-- 属性编辑器的学习 end-->
+
 </beans>
