@@ -45,7 +45,8 @@ class Demo1Thread1 extends Thread {
         try {
             for (int i = 0; i < 10; i++) {
                 synchronized (demo1) {
-                    if (demo1.isFlag()) {
+                    //这里一定要用while，不要用if，为了防止虚假唤醒，当拿到锁以后，需要循环验证是否真正的拿到了锁
+                    while (demo1.isFlag()) {
                         demo1.wait();
                     }
                     demo1.num++;
@@ -72,7 +73,7 @@ class Demo1Thread2 extends Thread {
         try {
             for (int i = 0; i < 10; i++) {
                 synchronized (demo1) {
-                    if(!demo1.isFlag()){
+                    while (!demo1.isFlag()){
                         demo1.wait();
                     }
                     demo1.num++;
