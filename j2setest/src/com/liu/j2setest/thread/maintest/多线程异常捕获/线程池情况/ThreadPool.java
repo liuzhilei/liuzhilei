@@ -22,24 +22,34 @@ class ThreadPoolMain {
         ExecutorService executorService = Executors.newCachedThreadPool();
 
         //1.executorService.execute(new Runnable())不会有返回结果，拿不到线程池的异常)
-        Thread.setDefaultUncaughtExceptionHandler(new MyThreadException());
+        /*Thread.setDefaultUncaughtExceptionHandler(new MyThreadException());
         executorService.execute(new Runnable() {
             @Override
             public void run() {
                 int i = 0;
                 i = i / 0;
             }
-        });
+        });*/
 
 
         //2.executorService.submit(new Callable())可以拿到结果，然后可以捕获异常
-        /*Future<Integer> future = executorService.submit(new Callable<Integer>() {
+        Future<Integer> future = executorService.submit(new Callable<Integer>() {
             @Override
             public Integer call() throws Exception {
                 int i = 0;
                 return i / 0;
             }
         });
+
+
+        //3.如果submit中使用runnable，对于异常也会捕获到，但是是没有返回结果的
+        /*Future<?> future = executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                int i = 1;
+                //i = i / 0;
+            }
+        });*/
         try {
             System.out.println("拿到了线程的运行结果，开始做一下乱七八糟的操作");
             future.get();
@@ -47,8 +57,8 @@ class ThreadPoolMain {
             e.printStackTrace();
         } catch (ExecutionException e) {
             System.out.println("捕获到异常");
-            e.printStackTrace();
-        }*/
+            //e.printStackTrace();
+        }
 
 
     }
