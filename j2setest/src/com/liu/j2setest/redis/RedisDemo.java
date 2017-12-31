@@ -26,9 +26,8 @@ public class RedisDemo {
 
         //如果未超时，就循环尝试获得锁
         while (System.currentTimeMillis() < endTime) {
-            //jedis.set(lockName,uuid,"NX",)
-            if (jedis.setnx(lockName, uuid).intValue() == 1) {
-                jedis.expire(lockName, 5000);
+            String result = jedis.set(lockName, uuid, "nx", "ex", 2000);
+            if (result != null && "OK".equals(result.toUpperCase())) {
                 return uuid;
             }
             //没有获得锁，就睡眠1秒，然后继续尝试获取
@@ -62,9 +61,9 @@ public class RedisDemo {
     public static void main(String[] args) throws InterruptedException {
         RedisDemo redisDemo = new RedisDemo();
         String s = redisDemo.acquireLock(1000000);
-        if (s != null){
+        if (s != null) {
             System.out.println("获得锁成功");
-        }else {
+        } else {
             System.out.println("获得锁失败");
         }
     }
