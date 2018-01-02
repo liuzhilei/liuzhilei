@@ -8,13 +8,21 @@ package com.liu.j2setest.内部类和内部接口.innerClass;
  * 2.内部类有所有外部元素的访问权限
  * 3.最重要的一点，可以实现多重继承
  * 4.一个类继承class1，实现interface1，如果两个类有同名方法，可以用来区分
+ *
+ * 内部类和静态内部类的区别：
+ * 1.如果不需要内部类对象和外围对象有联系，就可以定义成静态内部类；
+ * 2.普通内部类需要外围类实例化以后才能进行实例化，静态内部类不依赖外围对象的实例化；
+ * 3.静态内部类可以有静态成员，普通内部类不能有静态成员
+ * 4.普通内部类具有外部元素的所有访问权限，静态内部类不能访问外部类的非静态元素
  */
 public class OuterClass extends ExtendsMain{
 
     private static int i = 0;
+    private int j = 0;
 
     //内部类，实现多继承
     class InnerClass extends Extends1{
+        int a = 0;
         public void innerMethod(){
             i = 1;//第二条
             System.out.println("inner method");
@@ -23,6 +31,7 @@ public class OuterClass extends ExtendsMain{
 
     //静态内部类，实现多继承
     static class StaticInnerClass extends Extends2{
+        int b = 0;
         public void staticInnerMethod(){
             i = 2;
             System.out.println("static inner method");
