@@ -37,6 +37,7 @@ public class QuickSort {
             right--;
         }
 
+        //此时，右边的数比左边的数小
         if (left < right) {
             nums[left] = nums[right];
             left++;
@@ -47,6 +48,7 @@ public class QuickSort {
             left++;
         }
 
+        //此时，左边的数比基准数大
         if (left < right) {
             nums[right] = nums[left];
             right--;
