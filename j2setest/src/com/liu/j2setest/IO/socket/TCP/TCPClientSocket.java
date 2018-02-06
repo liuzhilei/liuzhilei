@@ -6,6 +6,8 @@ import java.net.Socket;
 /**
  * Created by liuzhilei on 2017/4/14.
  * 客户端
+ * 这个例子属于单播模式：一对一的模式，发送，接收只在两者之间进行。
+ * 缺点：有多少个主机就要进行多少次通信，效率极低
  */
 public class TCPClientSocket {
 
