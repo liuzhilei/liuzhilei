@@ -6,7 +6,7 @@ import java.net.MulticastSocket;
 
 /**
  * Created by liuzhilei on 2018/2/5.
- * TCP包下是socket的单播模式，这个例子是组播模式,利用的是UDP
+ * TCP包下是socket的单播模式，这个例子是socket组播模式,利用的是UDP
  * 特点：
  * 1.节省网络资源
  * 2.有针对性的向组内成员传播
