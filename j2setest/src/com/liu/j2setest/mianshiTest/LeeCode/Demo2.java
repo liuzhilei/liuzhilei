@@ -1,5 +1,8 @@
 package com.liu.j2setest.mianshiTest.LeeCode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by liuzhilei on 2018/1/3.
  * 给定两个非空链表，表示两个非负整数。数字以相反的顺序存储，每个节点包含一个数字，添加这两个数字并将其作为链接列表返回。
@@ -11,8 +14,8 @@ package com.liu.j2setest.mianshiTest.LeeCode;
  * 说明： 321 + 586 = 907。
  * <p/>
  * 解题思路：
- * 1.需要先定义一个用于进位的变量markIndex
- * 2.根据node.next，while循环链表，第一次循环为1和6相加，假如大于10，markIndex设置为1，用于下次相加的进位。当用完markindex以后，需要重置为0重新记录。
+ * 1.从左至右相加，如果大于10，后面的值进一位，markIndex记录进位
+ * 2.对于最后一位相加>=10的情况，需要单独在后面补充一个val为1的node
  */
 public class Demo2 {
 
@@ -30,17 +33,23 @@ public class Demo2 {
         Demo2 demo2 = new Demo2();
         ListNode listNode = demo2.new ListNode(1);
         listNode.next = demo2.new ListNode(2);
-        listNode.next.next = demo2.new ListNode(3);
+        listNode.next.next = demo2.new ListNode(5);
 
         ListNode listNode1 = demo2.new ListNode(6);
         listNode1.next = demo2.new ListNode(8);
-        listNode1.next.next = demo2.new ListNode(5);
+        listNode1.next.next = demo2.new ListNode(6);
+
+
+        /*ListNode listNode = demo2.new ListNode(5);
+        ListNode listNode1 = demo2.new ListNode(5);*/
 
         demo2.method1(listNode, listNode1);
 
     }
 
-    public void method1(ListNode node1, ListNode node2) {
+    public ListNode method1(ListNode node1, ListNode node2) {
+        ListNode original = new ListNode(0);
+        ListNode result = original;
         //用于标记进位
         int markIndex = 0;
 
@@ -60,18 +69,18 @@ public class Demo2 {
 
             //进位的值加上当前num1和num2的和
             int tempSum = markIndex + num1 + num2;
+            markIndex = tempSum / 10;
 
-            //进位重置为0，用于下次记录
-            markIndex = 0;
+            result.next = new ListNode(tempSum % 10);
+            result = result.next;
 
-            //相加大于10，记录进位
-            if (tempSum >= 10) {
-                tempSum = tempSum % 10;
-                markIndex++;
+            if (tempSum / 10 == 1) {
+                //该情况针对最后一位是5的情况，需要在listnode后面额外的补充一个val为1的node
+                result.next = new ListNode(1);
             }
-            System.out.print(tempSum);
         }
 
+        return original.next;
     }
 
 
