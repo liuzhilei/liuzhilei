@@ -4,6 +4,8 @@ package com.liu.j2setest.装箱拆箱;
  * Created by liuzhilei on 2017/7/2.
  * 包装类的==如果不遇到算数运算，不会自动拆箱
  * equals不处理类型转换
+ *
+ * Integer对于-128 ~ +127 之间，都是同一个对象
  */
 public class Test {
     public static void main(String[] args) {
