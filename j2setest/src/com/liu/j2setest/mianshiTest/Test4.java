@@ -34,14 +34,14 @@ public class Test4 {
 
     public static Node reverseNode(Node node) {
         Node cur = node;
-        Node b = null;
+        Node preNode = null;
         while (cur != null) {
-            Node a = cur.next; //记录当前节点的下一节点
-            cur.next = b;//将b赋给当前节点的next
-            b = cur;//当前节点赋给b，用于下次循环将比指向操作节点的next,b循环到最后，就是反转节点的头节点
-            cur = a;//记录的a赋给cur，用于下次循环
+            Node nextNode = cur.next; //记录当前节点的下一节点
+            cur.next = preNode;//将b赋给当前节点的next
+            preNode = cur;//当前节点赋给preNode，用于下次循环将比指向操作节点的next,b循环到最后，就是反转节点的头节点
+            cur = nextNode;//记录的a赋给cur，用于下次循环
         }
 
-        return b;
+        return preNode;
     }
 }

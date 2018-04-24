@@ -38,23 +38,23 @@ public class Test5 {
     }
 
     public static Node reverseNode(Node node, int k) {
-        Node b = null;
+        Node preNode = null;//记录当前节点的上一个节点,这个节点是反转后的下一节点
         Node cur = node;
         int count = 0;
         while (count < k && cur != null) {
             Node a = cur.next;
-            cur.next = b;
-            b = cur;
+            cur.next = preNode;
+            preNode = cur; //当前节点赋给preNode，用于下次循环将比指向操作节点的next,b循环到最后，就是反转节点的头节点
             cur = a;
             count++;
         }
 
         //分组执行，每次走到这就是走完了一个K组,把本组的最后一个值的next指向下一组转换后的第一个值，就联合成一条链表了
         if (cur != null) {
-            node.next= reverseNode(cur, 3);
+            node.next = reverseNode(cur, 3);
         }
 
-        return b;
+        return preNode;
     }
 
 
