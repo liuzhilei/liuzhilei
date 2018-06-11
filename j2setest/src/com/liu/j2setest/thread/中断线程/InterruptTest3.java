@@ -14,6 +14,7 @@ public class InterruptTest3 extends Thread {
         while (!Thread.currentThread().isInterrupted()) {
             System.out.println("线程正在运行");
             try {
+                System.out.println("try语句块中中断状态：" + this.isInterrupted());
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 /**
@@ -27,6 +28,7 @@ public class InterruptTest3 extends Thread {
                  * 如果不中断，就不调用
                  */
                 this.interrupt();
+                System.out.println("再次执行中断后，中断状态：" + this.isInterrupted());
             }
         }
         System.out.println("线程退出");
