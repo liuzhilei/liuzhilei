@@ -5,4 +5,5 @@ package com.liu.j2setest.designpattern.SingleTon;
  * 枚举就是一个单例
  */
 public enum SingleTon4 {
+    SPRING,SUMMER,AUTUMN,WINTER;
 }
