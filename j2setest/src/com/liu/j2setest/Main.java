@@ -37,28 +37,6 @@ public class Main {
         return i;
     }
 
-
-    public static void recordTable() {
-        String str = "CREATE TABLE `sdkChuguanStock_compare_record_%s` (\n" +
-                "  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',\n" +
-                "  `sku` bigint(20) NOT NULL COMMENT 'sku',\n" +
-                "  `chuguanNum` mediumtext NOT NULL COMMENT '出管现货在途，以及内配系统的数据',\n" +
-                "  `stockNum` mediumtext NOT NULL COMMENT 'sdk数据',\n" +
-                "  `chuguan_sub_stock` mediumtext NOT NULL COMMENT 'chuguan和sdk差异值',\n" +
-                "  `repairTaskId` int(11) NOT NULL COMMENT '对应修复任务主键',\n" +
-                "  `createtime` datetime NOT NULL COMMENT '创建时间',\n" +
-                "  `modifytime` datetime NOT NULL COMMENT '修改时间',\n" +
-                "  PRIMARY KEY (`id`),\n" +
-                "  KEY `idx_record_sku` (`sku`),\n" +
-                "  KEY `idx_repairTaskId` (`repairTaskId`)\n" +
-                ") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='自营和出管现货、在途、内配出入对比记录表';";
-        for (int i = 0; i < 128; i++) {
-            String format = String.format(str, i);
-            System.out.println(format);
-            System.out.println();
-        }
-    }
-
     public static void compareTable() {
         String str = "CREATE TABLE `sdkChuguanStock_compare_task_%s` (\n" +
                 "  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',\n" +
