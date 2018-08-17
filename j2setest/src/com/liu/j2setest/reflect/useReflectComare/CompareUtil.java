@@ -13,6 +13,13 @@ public class CompareUtil {
 
     private static boolean check(Class clazz, Object com1, Object com2) {
         try {
+            if(com1 == null && com2 == null){
+                return true;
+            }
+
+            if(com1 == null || com2 == null){
+                return false;
+            }
             Field[] fields = clazz.getDeclaredFields();
             for (Field field : fields) {
                 field.setAccessible(true);
@@ -29,7 +36,13 @@ public class CompareUtil {
                     continue;
                 }
 
-                if (field.getType() == List.class) {
+                if(!(com1Field instanceof List)){
+                    if(!com1Field.equals(com2Field)){
+                        return false;
+                    }
+                }
+
+                if (com1Field instanceof List) {
                     // 如果是List类型，得到其Generic的类型
                     Type genericType = field.getGenericType();
                     if (genericType == null) continue;
@@ -47,19 +60,11 @@ public class CompareUtil {
                         }
 
                         for (int i = 0; i < list1.size(); i++) {
-                            check(genericClazz, ((List) com1Field).get(i), ((List) com2Field).get(i));
+                            check(genericClazz, list1.get(i), list2.get(i));
                         }
                     }
                 }
 
-                if (com1Field != com2Field && !com1Field.equals(com2Field)) {
-                    if(com1Field instanceof List){
-                        continue;
-                    }
-                    System.out.println(clazz.getSimpleName() + ":" +field.getName() + ":" + com1Field);
-                    System.out.println(clazz.getSimpleName() + ":" +field.getName() + ":" + com2Field);
-                    continue;
-                }
                 System.out.println("========");
             }
         } catch (Exception e) {
