@@ -13,11 +13,11 @@ public class CompareUtil {
 
     private static boolean check(Class clazz, Object com1, Object com2) {
         try {
-            if(com1 == null && com2 == null){
+            if (com1 == null && com2 == null) {
                 return true;
             }
 
-            if(com1 == null || com2 == null){
+            if (com1 == null || com2 == null) {
                 return false;
             }
             Field[] fields = clazz.getDeclaredFields();
@@ -31,17 +31,18 @@ public class CompareUtil {
                 }
 
                 if (com1Field == null || com2Field == null) {
-                    System.out.println(clazz.getSimpleName() + ":" +field.getName() + ":" + com1Field);
-                    System.out.println(clazz.getSimpleName() + ":" +field.getName() + ":" + com2Field);
+                    System.out.println(clazz.getSimpleName() + ":" + field.getName() + ":" + com1Field);
+                    System.out.println(clazz.getSimpleName() + ":" + field.getName() + ":" + com2Field);
                     continue;
                 }
 
-                if(!(com1Field instanceof List)){
-                    if(!com1Field.equals(com2Field)){
+                if (!(com1Field instanceof List)) {
+                    if (!com1Field.equals(com2Field)) {
                         return false;
                     }
                 }
 
+                //写法一
                 if (com1Field instanceof List) {
                     // 如果是List类型，得到其Generic的类型
                     Type genericType = field.getGenericType();
@@ -53,9 +54,9 @@ public class CompareUtil {
                         Class<?> genericClazz = (Class<?>) pt.getActualTypeArguments()[0];
                         List list1 = (List) com1Field;
                         List list2 = (List) com2Field;
-                        if(list1.size() != list2.size()){
-                            System.out.println("size 不一致"+clazz.getSimpleName() + ":" +field.getName() + ":" + com1Field);
-                            System.out.println("size 不一致"+clazz.getSimpleName() + ":" +field.getName() + ":" + com2Field);
+                        if (list1.size() != list2.size()) {
+                            System.out.println("size 不一致" + clazz.getSimpleName() + ":" + field.getName() + ":" + com1Field);
+                            System.out.println("size 不一致" + clazz.getSimpleName() + ":" + field.getName() + ":" + com2Field);
                             continue;
                         }
 
@@ -64,6 +65,18 @@ public class CompareUtil {
                         }
                     }
                 }
+
+                //写法二 避过泛型的获取api,比较简单
+                /*if(com1Field instanceof List){
+                    List list1 = (List) com1Field;
+                    List list2 = (List) com2Field;
+                    if(list1.size() != list2.size()){
+                        continue;
+                    }
+                    for(int i = 0; i < list1.size(); i++){
+                        check(list1.get(i).getClass(), list1.get(i), list2.get(i));
+                    }
+                }*/
 
                 System.out.println("========");
             }
