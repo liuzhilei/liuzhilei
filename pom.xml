@@ -19,6 +19,7 @@
         <module>spring-aop-test</module>
         <module>nettystudy</module>
         <module>jms-study</module>
+        <module>j2setest</module>
     </modules>
 
     <properties>
@@ -215,7 +216,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>11.0.1</version>
+            <version>18.0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
