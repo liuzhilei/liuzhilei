@@ -1,5 +1,6 @@
 package com.liu.j2setest.mianshiTest.java创建类的方式;
 
+import com.liu.j2setest.designpattern.SingleTon.SingleTon5;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Constructor;
@@ -25,7 +26,7 @@ public class Method {
         //3.序列化反序列化
         // 详见serializable包
 
-        //4.利用unsafe，直接通过内存偏移地址获取，不会调用构造方法
+        //4.利用unsafe，直接通过内存偏移地址获取，不会调用构造方法，可以打破有防御的单例
         Field f = Unsafe.class.getDeclaredField("theUnsafe");
         f.setAccessible(true);
         Unsafe unsafe = (Unsafe) f.get(null);

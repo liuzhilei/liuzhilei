@@ -11,6 +11,7 @@ import java.nio.channels.ServerSocketChannel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -20,6 +21,13 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Main {
 
     public static void main(String[] args) {
+        ConcurrentHashMap<Integer,Integer> map = new ConcurrentHashMap<>();
+        Integer put = map.put(1, 1);
+        System.out.println(put);
+        Integer put1 = map.put(1, 2);
+        System.out.println(put1);
+        Integer put2 = map.put(1, 3);
+        System.out.println(put2);
 
     }
 
