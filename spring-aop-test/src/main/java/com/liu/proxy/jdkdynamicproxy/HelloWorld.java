@@ -6,5 +6,5 @@ package com.liu.proxy.jdkdynamicproxy;
  */
 public interface HelloWorld {
 
-    public void sayHello(String name);
+    void sayHello(String name);
 }
