@@ -15,28 +15,26 @@ import java.lang.reflect.Proxy;
  */
 public class ProxyMain {
     public static void main(String[] args) throws Exception{
-        HelloWorldImpl1 realHelloWorld = new HelloWorldImpl1();
-        MyInvocationHandler handler = new MyInvocationHandler(realHelloWorld);
-        System.out.println(handler);
-        /**
-         * Jdk通过java.lang.reflect.Proxy 来实现动态代理，调用proxy的newProxyInstance来获得代理实现类。
-         * 对于代理接口的实际处理，是一个java.lang.reflect.InvocationHandler，他提供一个invoke方法实现具体的代理业务逻辑代码。
-         */
+        MyInvocationHandler handler = new MyInvocationHandler(new HelloWorldImpl1());
+
+        //获得代理实现类
         HelloWorld helloWorld = (HelloWorld) Proxy.newProxyInstance(ProxyMain.class.getClassLoader(), new Class[]{HelloWorld.class}, handler);
 
-        System.out.println("生成的helloWorld是否为动态代理类："+Proxy.isProxyClass(helloWorld.getClass()));
+        helloWorld.sayHello("刘志磊");
 
-        System.out.println(Proxy.getInvocationHandler(helloWorld));
+        //代理类写入文件
+        writeToClass();
+    }
 
-        //ProxyGenerator类用于生成代理类的字节码文件
-        byte[] bytes = ProxyGenerator.generateProxyClass("com.sun.proxy.$Proxy0", new Class[]{helloWorld.getClass()});
+    private static void writeToClass() throws Exception{
+        //ProxyGenerator类用于生成代理类的字节码文件,动态代理生成字节码文件同样用的该方法
+        byte[] bytes = ProxyGenerator.generateProxyClass("$Proxy", HelloWorldImpl1.class.getInterfaces());
 
         //将字节数组写入文件
-        File file = new File("/Users/liuzhilei/proxyclass/test.class");
+        File file = new File("/Users/liuzhilei/proxyclass/$Proxy.class");
         FileOutputStream fileOutputStream = new FileOutputStream(file);
         fileOutputStream.write(bytes);
         fileOutputStream.close();
 
-        helloWorld.sayHello("刘志磊");
     }
 }
