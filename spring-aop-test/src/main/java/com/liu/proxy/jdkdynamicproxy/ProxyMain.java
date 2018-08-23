@@ -19,6 +19,12 @@ public class ProxyMain {
 
         //获得代理实现类
         HelloWorld helloWorld = (HelloWorld) Proxy.newProxyInstance(ProxyMain.class.getClassLoader(), new Class[]{HelloWorld.class}, handler);
+        /**
+         * 这两个代理类是同一个代理类，源码里面有解释，生成代理类会放入内存，下次再获取的时候，直接获取。
+         * {@link java.lang.reflect.WeakCache#get(java.lang.Object, java.lang.Object)} 该方法有解释
+         */
+        HelloWorld helloWorld11 = (HelloWorld) Proxy.newProxyInstance(ProxyMain.class.getClassLoader(), new Class[]{HelloWorld.class}, handler);
+
 
         helloWorld.sayHello("刘志磊");
 
