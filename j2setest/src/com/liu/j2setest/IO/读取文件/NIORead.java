@@ -11,7 +11,7 @@ import java.nio.channels.FileChannel;
  * 普通IO读取文件
  * 普通NIO读取文件
  * 利用NIO的mappedByteBuffer读取文件 三者的性能比较
- *
+ * <p>
  * 参考网址
  * http://blog.csdn.net/gzu_imis/article/details/21109753
  */
@@ -112,19 +112,10 @@ public class NIORead {
 
         //如果文件很大，可以循环读取，计算应该循环多少次
         byte[] bytes = new byte[allocate];
-        long cycle = size / allocate;
-        //看能否整数倍读完
-        int mode = (int) (size % allocate);
+        long cycle = (size + allocate - 1) / allocate;
 
         for (int i = 0; i < cycle; i++) {
             //每次读取allocate个字节
-            mappedByteBuffer.get(bytes);
-
-            //打印会耗时
-            //System.out.println(new String(bytes, 0, bytes.length));
-        }
-        if (mode > 0) {
-            bytes = new byte[mode];
             mappedByteBuffer.get(bytes);
 
             //打印会耗时

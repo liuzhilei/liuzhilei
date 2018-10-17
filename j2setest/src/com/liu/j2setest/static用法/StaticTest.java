@@ -1,6 +1,5 @@
 package com.liu.j2setest.static用法;
 
-import static com.liu.j2setest.Main.mainTest;
 
 /**
  * Created by liuzhilei on 2017/6/13.
@@ -30,7 +29,7 @@ public class StaticTest {
 
     public static void main(String[] args) {
         //static 可以静态导包，导入指定类的静态方法
-        mainTest();
+        //mainTest();
     }
 
 }

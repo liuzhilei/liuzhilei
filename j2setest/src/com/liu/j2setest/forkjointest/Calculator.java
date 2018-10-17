@@ -8,7 +8,7 @@ import java.util.concurrent.RecursiveTask;
  */
 public class Calculator extends RecursiveTask<Integer> {
 
-    private int start;
+    /*private int start;
     private int end;
 
     public Calculator(int start, int end) {
@@ -44,9 +44,9 @@ public class Calculator extends RecursiveTask<Integer> {
 
         System.out.println(sum);
         return sum;
-    }
+    }*/
 
-    /*private static final int THRESHOLD = 100;
+    private static final int THRESHOLD = 100;
     private int start;
     private int end;
 
@@ -58,8 +58,8 @@ public class Calculator extends RecursiveTask<Integer> {
     @Override
     protected Integer compute() {
         int sum = 0;
-        if((start - end) < THRESHOLD){
-            for(int i = start; i< end;i++){
+        if((end - start) <= THRESHOLD){
+            for(int i = start; i<= end;i++){
                 sum += i;
             }
         }else{
@@ -72,5 +72,5 @@ public class Calculator extends RecursiveTask<Integer> {
             sum = left.join() + right.join();
         }
         return sum;
-    }*/
+    }
 }

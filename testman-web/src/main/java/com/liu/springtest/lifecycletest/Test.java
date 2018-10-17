@@ -12,7 +12,7 @@ public class Test {
         applicationContext.getBean("initSequenceBean");
     }
 
-    @org.junit.Test
+    @org.junit.jupiter.api.Test
     public void test(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-test.xml");
     }

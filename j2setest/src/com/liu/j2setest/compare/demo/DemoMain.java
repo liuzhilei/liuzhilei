@@ -7,8 +7,11 @@ import java.util.*;
 /**
  * Created by liuzhilei on 2017/9/3.
  *
- * 比较总结，如果对于数据量大的集合，先排序再比较是比较快的
- * 如果数据量小的集合，直接转set比较是比较快的
+ * 两个集合相比较
+ * 1.可以把两个都放入map中，根据相同的key，然后比较value
+ * 2.实现Comparable，重写比较器，利用集合的sort先排序，然后再对比
+ * 3.对应实体重写hashcode和equals，将list集合直接转换成set，调用set的equals进行比较
+ * 效率：set>sort>转换成map遍历
  */
 public class DemoMain {
     public static void main(String[] args) {
@@ -25,30 +28,14 @@ public class DemoMain {
         System.out.println(v3.equals(v5));
 
         List<DemoVo> list = new ArrayList();
-        list.add(v1);
-        list.add(v2);
-        list.add(v3);
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 5000000; i++) {
             list.add(v1);
         }
-        list.add(v3);
-        list.add(v2);
-        /*for (int i = 0; i < 1000000; i++) {
-            list.add(v2);
-        }*/
 
         List<DemoVo> list1 = new ArrayList();
-        list1.add(v4);
-        list1.add(v6);
-        list1.add(v5);
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 5000000; i++) {
             list1.add(v4);
         }
-        list1.add(v5);
-        list1.add(v6);
-        /*for (int i = 0; i < 1000000; i++) {
-            list1.add(v5);
-        }*/
 
 
         System.out.println(list.equals(list1));
@@ -76,9 +63,6 @@ public class DemoMain {
         end = System.currentTimeMillis();
         System.out.println(b1);
         System.out.println((end - start) + "ms");
-
-        List list2 = null;
-        Set set = new HashSet(list2);
 
     }
 }
