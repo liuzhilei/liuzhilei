@@ -21,14 +21,14 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Main {
 
     public static void main(String[] args) {
-        ConcurrentHashMap<Integer,Integer> map = new ConcurrentHashMap<>();
-        Integer put = map.put(1, 1);
-        System.out.println(put);
-        Integer put1 = map.put(1, 2);
-        System.out.println(put1);
-        Integer put2 = map.put(1, 3);
-        System.out.println(put2);
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
 
+        for(String string : list){
+            System.out.println(string);
+        }
 
     }
 

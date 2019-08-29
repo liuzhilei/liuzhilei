@@ -22,6 +22,10 @@ public class SingleTon3 {
     }
 
     /*
+     *  synchronized保证原子性，有序性，可见性，但是不能禁止指令重排序，volatile可以禁止指令重排序。
+     *  有序性体现在在本线程内有序，线程外表现为无需，所以和禁止指令重排序是两码事，所以singleTon3必须加上volatile关键字
+     *
+     *
      * 变量singleTon3必须有volatile注释的原因：禁止指令重排序。
      * singleTon3 = new SingleTon3();
      * 对于上面的命令，正常的执行逻辑为：
