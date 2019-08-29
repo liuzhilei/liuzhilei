@@ -21,4 +21,24 @@ public class SingleTon3 {
         return singleTon3;
     }
 
+    /*
+     * 变量singleTon3必须有volatile注释的原因：禁止指令重排序。
+     * singleTon3 = new SingleTon3();
+     * 对于上面的命令，正常的执行逻辑为：
+     * 1.jvm为对象分配一块内存M
+     * 2.在M上将对象进行初始化
+     * 3.将初始化后的对象赋值给singleTon3变量
+     *
+     * 但是如果发生了执行重排序，可能的步骤为：
+     * 1.jvm为对象分配一块内存M
+     * 2.将内存M赋值给singleTon3变量
+     * 3.在M上将对象进行初始化
+     *
+     * 不加volatile，比如有如下场景：
+     * 1.thread1执行到17行为对象初始化
+     * 2.thread2执行到14行 判断singleTon3为空
+     * 3.thread2执行到16行 判断singleTon3不为空
+     * 4.thread2执行到21行，返回singleTon3，然后调用该类的其他方法，因为可能发生上面的指令重排序，所以就导致了空指针
+     */
+
 }
